@@ -1,0 +1,25 @@
+services:
+  voidx-backend:
+    type: web
+    plan: free
+    region: oregon
+    rootDir: backend
+    dockerfilePath: backend/Dockerfile
+    buildCommand: ""    # Dockerfile handles the build; no extra build command needed
+    autoDeploy: true
+    healthCheck:
+      httpPath: /api/health
+      initialWaitSeconds: 15
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:///./voidx.db
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "10080"
+      # Set these from Render's secret store (Settings > Environment > Secrets),
+      # NOT here, so the key is never committed:
+      #   SECRET_KEY     -> a long random string (REQUIRED for prod)
+      #   GROQ_API_KEY   -> optional, enables the AI PII sanitizer
+      #   DATABASE_URL   -> override to Postgres for production if you prefer:
+      #                     postgresql+asyncpg://user:pass@host:5432/voidx
