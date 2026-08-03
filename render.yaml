@@ -3,13 +3,12 @@ services:
     type: web
     plan: free
     region: oregon
-    rootDir: backend
     dockerfilePath: backend/Dockerfile
-    buildCommand: ""    # Dockerfile handles the build; no extra build command needed
+    # No startCommand: the Dockerfile ENTRYPOINT runs seed -> uvicorn.
     autoDeploy: true
     healthCheck:
       httpPath: /api/health
-      initialWaitSeconds: 15
+      initialWaitSeconds: 20
     envVars:
       - key: DATABASE_URL
         value: sqlite+aiosqlite:///./voidx.db
@@ -17,9 +16,9 @@ services:
         value: HS256
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: "10080"
-      # Set these from Render's secret store (Settings > Environment > Secrets),
-      # NOT here, so the key is never committed:
-      #   SECRET_KEY     -> a long random string (REQUIRED for prod)
-      #   GROQ_API_KEY   -> optional, enables the AI PII sanitizer
-      #   DATABASE_URL   -> override to Postgres for production if you prefer:
+      # Add these THREE as Render Secrets (Settings > Environment > Secrets)
+      # so they are never committed to the repo:
+      #   SECRET_KEY      (REQUIRED) a long random string for JWT signing
+      #   GROQ_API_KEY    (optional) enables the AI PII-message sanitizer
+      #   DATABASE_URL    (optional) override; for production use Postgres:
       #                     postgresql+asyncpg://user:pass@host:5432/voidx
