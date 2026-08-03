@@ -18,10 +18,27 @@ SYSTEM_PROMPT = """You are a text sanitizer for a secret anonymous team. Rewrite
 
 Keep the core meaning and intent of the message intact. Use neutral, anonymous language. Do not add explanations, notes, or metadata. Output ONLY the sanitized message with no extra text."""
 
-client = Groq(api_key=GROQ_API_KEY) if GROQ_API_KEY else None
+_client: "Groq | None" = None
+_init_attempted = False
+
+
+def _get_client() -> "Groq | None":
+    global _client, _init_attempted
+    if _init_attempted:
+        return _client
+    _init_attempted = True
+    if not GROQ_API_KEY:
+        return None
+    try:
+        _client = Groq(api_key=GROQ_API_KEY)
+    except Exception as e:
+        logger.warning(f"Groq client initialization failed: {e}")
+        _client = None
+    return _client
 
 
 async def sanitize_message(message: str) -> str:
+    client = _get_client()
     if not client:
         return message
     try:
