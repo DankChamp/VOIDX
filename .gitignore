@@ -5,4 +5,5 @@ venv/
 .env
 __pycache__/
 *.pyc
+*.tsbuildinfo
 .DS_Store

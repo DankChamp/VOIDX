@@ -3,8 +3,9 @@ services:
     type: web
     plan: free
     region: oregon
-    dockerfilePath: backend/Dockerfile
-    # No startCommand: the Dockerfile ENTRYPOINT runs seed -> uvicorn.
+    # Build via the root Dockerfile (Render default). The Dockerfile ENTRYPOINT
+    # seeds the leader account (idempotent) and then starts uvicorn.
+
     autoDeploy: true
     healthCheck:
       httpPath: /api/health
