@@ -24,6 +24,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+      - name: Inject backend API URL
+        run: echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> "$GITHUB_ENV"
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v3
         with:
