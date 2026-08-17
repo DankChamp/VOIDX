@@ -1,0 +1,93 @@
+name: Weekly Contribution
+
+on:
+  schedule:
+    - cron: '0 12 * * 5'  # Every Friday at 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  backend-contrib:
+    name: Backend weekly
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Lint & typecheck
+        run: |
+          pip install ruff mypy
+          ruff check .
+          mypy . || true
+
+      - name: Auto-fix
+        run: ruff check --fix . || true
+
+      - name: Commit backend improvements
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          if ! git diff --quiet; then
+            git add -A
+            git commit -m "chore(backend): weekly lint fix & improvements [bot]"
+            git push
+          else
+            echo "No backend changes to commit"
+          fi
+
+  frontend-contrib:
+    name: Frontend weekly
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npx eslint src --ext ts,tsx --format=github || true
+
+      - name: Auto-fix
+        run: npx eslint src --ext ts,tsx --fix || true
+
+      - name: Commit frontend improvements
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          if ! git diff --quiet; then
+            git add -A
+            git commit -m "chore(frontend): weekly lint fix & improvements [bot]"
+            git push
+          else
+            echo "No frontend changes to commit"
+          fi
