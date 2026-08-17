@@ -1,0 +1,74 @@
+version: 2
+updates:
+  # Backend Python dependencies
+  - package-ecosystem: "pip"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "python"
+      - "backend"
+    commit-message:
+      prefix: "deps(backend)"
+    groups:
+      fastapi-stack:
+        patterns:
+          - "fastapi"
+          - "uvicorn"
+          - "sqlalchemy*"
+          - "aiosqlite"
+      auth-deps:
+        patterns:
+          - "python-jose*"
+          - "bcrypt"
+          - "python-dotenv"
+      ai-clients:
+        patterns:
+          - "groq"
+          - "httpx"
+
+  # Frontend npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "typescript"
+      - "frontend"
+    commit-message:
+      prefix: "deps(frontend)"
+    groups:
+      react-stack:
+        patterns:
+          - "react*"
+          - "react-dom"
+          - "react-router*"
+      state-mgmt:
+        patterns:
+          - "zustand"
+      build-tools:
+        patterns:
+          - "vite*"
+          - "@vitejs/*"
+          - "typescript"
+          - "@types/*"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
