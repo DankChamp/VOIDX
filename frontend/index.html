@@ -3,46 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="VOIDX — Final Frontend">
+<meta name="description" content="VOIDX — Release Candidate">
 <title>VOIDX</title>
 <style>
 /* ============================================================
-   VOIDX PHASE 0 — FOUNDATION CSS (PRESERVED & POLISHED)
+   VOIDX — COMPLETE THEME SYSTEM
    ============================================================ */
+
+/* ── Design Tokens (Dark — Default) ── */
 :root {
-  --vx-bg-primary: #0a0a0c;
-  --vx-bg-secondary: #0f0f12;
-  --vx-bg-tertiary: #16161a;
-  --vx-bg-elevated: #1c1c21;
-  --vx-surface: #222228;
-  --vx-surface-hover: #2a2a32;
-  --vx-border-subtle: rgba(255,255,255,0.06);
-  --vx-border-default: rgba(255,255,255,0.10);
-  --vx-border-strong: rgba(255,255,255,0.15);
-  --vx-border-focus: rgba(107,159,168,0.50);
-  --vx-text-primary: #f0f0f5;
-  --vx-text-secondary: #a0a0ac;
-  --vx-text-tertiary: #6e6e7a;
-  --vx-text-muted: #4a4a55;
-  --vx-text-inverse: #0a0a0c;
+  --vx-bg-primary: #09090b;
+  --vx-bg-secondary: #0c0c10;
+  --vx-bg-tertiary: #131318;
+  --vx-bg-elevated: #18181f;
+  --vx-surface: #1e1e26;
+  --vx-surface-hover: #272730;
+  --vx-border-subtle: rgba(255,255,255,0.045);
+  --vx-border-default: rgba(255,255,255,0.08);
+  --vx-border-strong: rgba(255,255,255,0.13);
+  --vx-border-focus: rgba(107,159,168,0.55);
+  --vx-text-primary: #f4f4f8;
+  --vx-text-secondary: #a1a1ad;
+  --vx-text-tertiary: #6e6e7c;
+  --vx-text-muted: #4a4a56;
+  --vx-text-inverse: #09090b;
   --vx-accent: #6b9fa8;
-  --vx-accent-hover: #7ab3bd;
-  --vx-accent-muted: rgba(107,159,168,0.12);
-  --vx-accent-glow: rgba(107,159,168,0.15);
+  --vx-accent-hover: #85b5bd;
+  --vx-accent-muted: rgba(107,159,168,0.10);
+  --vx-accent-glow: rgba(107,159,168,0.12);
   --vx-danger: #c45b5b;
-  --vx-danger-muted: rgba(196,91,91,0.12);
+  --vx-danger-muted: rgba(196,91,91,0.10);
   --vx-warning: #c4a35b;
-  --vx-warning-muted: rgba(196,163,91,0.12);
+  --vx-warning-muted: rgba(196,163,91,0.10);
   --vx-success: #5bc48a;
-  --vx-success-muted: rgba(91,196,138,0.12);
+  --vx-success-muted: rgba(91,196,138,0.10);
   --vx-info: #5b8cc4;
-  --vx-info-muted: rgba(91,140,196,0.12);
-  --vx-void: #8b7ab8;
-  --vx-void-muted: rgba(139,122,184,0.12);
-  --vx-admin: #b88a5b;
-  --vx-admin-muted: rgba(184,138,91,0.12);
+  --vx-info-muted: rgba(91,140,196,0.10);
+  --vx-void: #9b8ac4;
+  --vx-void-muted: rgba(139,122,184,0.10);
+  --vx-admin: #c49a6b;
+  --vx-admin-muted: rgba(184,138,91,0.10);
   --vx-member: #6b9fa8;
-  --vx-member-muted: rgba(107,159,168,0.12);
+  --vx-member-muted: rgba(107,159,168,0.10);
+  --vx-shadow-subtle: 0 1px 2px rgba(0,0,0,0.30);
+  --vx-shadow-medium: 0 4px 16px rgba(0,0,0,0.45);
+  --vx-shadow-large: 0 12px 40px rgba(0,0,0,0.55);
+  --vx-shadow-inset: inset 0 1px 0 var(--vx-border-subtle);
+
   --vx-font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --vx-font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Fira Code', 'Roboto Mono', monospace;
   --vx-text-2xs: 0.625rem;
@@ -62,10 +69,10 @@
   --vx-weight-semibold: 600;
   --vx-weight-bold: 700;
   --vx-leading-none: 1;
-  --vx-leading-tight: 1.2;
+  --vx-leading-tight: 1.15;
   --vx-leading-snug: 1.35;
-  --vx-leading-normal: 1.5;
-  --vx-leading-relaxed: 1.65;
+  --vx-leading-normal: 1.55;
+  --vx-leading-relaxed: 1.7;
   --vx-space-0: 0;
   --vx-space-1: 0.125rem;
   --vx-space-2: 0.25rem;
@@ -92,15 +99,10 @@
   --vx-radius-16: 16px;
   --vx-radius-24: 24px;
   --vx-radius-full: 9999px;
-  --vx-shadow-subtle: 0 1px 2px rgba(0,0,0,0.30);
-  --vx-shadow-medium: 0 4px 12px rgba(0,0,0,0.40);
-  --vx-shadow-large: 0 8px 30px rgba(0,0,0,0.50);
-  --vx-shadow-accent: 0 0 24px var(--vx-accent-glow);
-  --vx-shadow-inset: inset 0 1px 0 var(--vx-border-subtle);
-  --vx-transition-fast: 0.10s ease;
-  --vx-transition-default: 0.20s ease;
-  --vx-transition-slow: 0.30s ease;
-  --vx-transition-slower: 0.50s ease;
+  --vx-transition-fast: 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  --vx-transition-default: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  --vx-transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --vx-transition-slower: 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   --vx-z-base: 0;
   --vx-z-dropdown: 100;
   --vx-z-sticky: 200;
@@ -117,23 +119,163 @@
   --vx-public-radius: var(--vx-radius-16);
   --vx-private-radius: var(--vx-radius-8);
 }
+
+/* ── Light Theme ── */
+html[data-theme="light"] {
+  --vx-bg-primary: #f2f2f5;
+  --vx-bg-secondary: #e8e8ec;
+  --vx-bg-tertiary: #dddee2;
+  --vx-bg-elevated: #ffffff;
+  --vx-surface: #ebebee;
+  --vx-surface-hover: #dedee2;
+  --vx-border-subtle: rgba(0,0,0,0.055);
+  --vx-border-default: rgba(0,0,0,0.09);
+  --vx-border-strong: rgba(0,0,0,0.18);
+  --vx-border-focus: rgba(91,140,168,0.50);
+  --vx-text-primary: #121214;
+  --vx-text-secondary: #3d3d46;
+  --vx-text-tertiary: #6c6c7a;
+  --vx-text-muted: #9a9aa6;
+  --vx-text-inverse: #ffffff;
+  --vx-accent: #5b8ca8;
+  --vx-accent-hover: #4a7a94;
+  --vx-accent-muted: rgba(91,140,168,0.12);
+  --vx-accent-glow: rgba(91,140,168,0.15);
+  --vx-danger: #c45b5b;
+  --vx-danger-muted: rgba(196,91,91,0.08);
+  --vx-warning: #b89a4a;
+  --vx-warning-muted: rgba(184,154,74,0.08);
+  --vx-success: #4caf84;
+  --vx-success-muted: rgba(76,175,132,0.08);
+  --vx-info: #4a7db8;
+  --vx-info-muted: rgba(74,125,184,0.08);
+  --vx-void: #8b7ab8;
+  --vx-void-muted: rgba(139,122,184,0.08);
+  --vx-admin: #b8946a;
+  --vx-admin-muted: rgba(184,148,106,0.08);
+  --vx-member: #5b8ca8;
+  --vx-member-muted: rgba(91,140,168,0.08);
+  --vx-shadow-subtle: 0 1px 2px rgba(0,0,0,0.06);
+  --vx-shadow-medium: 0 4px 16px rgba(0,0,0,0.08);
+  --vx-shadow-large: 0 12px 40px rgba(0,0,0,0.12);
+  --vx-shadow-inset: inset 0 1px 0 var(--vx-border-subtle);
+}
+
+/* ── Compact Mode ── */
+html.vx-compact {
+  --vx-header-height: 48px;
+}
+html.vx-compact .vx-card__header,
+html.vx-compact .vx-card__body,
+html.vx-compact .vx-card__footer {
+  padding: var(--vx-space-4) !important;
+}
+html.vx-compact .vx-table td,
+html.vx-compact .vx-table th {
+  padding: var(--vx-space-2) var(--vx-space-3);
+}
+html.vx-compact .vx-form-group {
+  margin-bottom: var(--vx-space-4);
+}
+html.vx-compact .vx-btn {
+  padding: var(--vx-space-2) var(--vx-space-4);
+  font-size: var(--vx-text-xs);
+}
+html.vx-compact .vx-sidebar__nav .vx-nav-item {
+  padding: var(--vx-space-2) var(--vx-space-3);
+}
+html.vx-compact .vx-sidebar__header,
+html.vx-compact .vx-topbar {
+  height: 48px;
+}
+html.vx-compact .vx-public-header {
+  height: 48px;
+}
+html.vx-compact .vx-metric-card {
+  padding: var(--vx-space-4);
+}
+html.vx-compact .vx-rnd-card,
+html.vx-compact .vx-project-card__content {
+  padding: var(--vx-space-4);
+}
+html.vx-compact .vx-public-section--hero {
+  padding-top: calc(48px + var(--vx-space-20));
+}
+html.vx-compact .vx-private-content {
+  padding: var(--vx-space-4);
+}
+
+/* ── Animations Disabled ── */
+html.vx-animations-disabled *,
+html.vx-animations-disabled *::before,
+html.vx-animations-disabled *::after {
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
+  animation-iteration-count: 1 !important;
+}
+html.vx-animations-disabled .vx-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+html.vx-animations-disabled .vx-page {
+  transition: none !important;
+}
+html.vx-animations-disabled .vx-modal {
+  transform: none !important;
+}
+html.vx-animations-disabled .vx-toast {
+  transform: none !important;
+}
+html.vx-animations-disabled .vx-hero__network canvas {
+  animation: none !important;
+}
+html.vx-animations-disabled .vx-btn {
+  transform: none !important;
+}
+html.vx-animations-disabled .vx-card,
+html.vx-animations-disabled .vx-project-card,
+html.vx-animations-disabled .vx-rnd-card,
+html.vx-animations-disabled .vx-ecosystem-node,
+html.vx-animations-disabled .vx-metric-card {
+  transform: none !important;
+}
+html.vx-animations-disabled .vx-nav-item,
+html.vx-animations-disabled .vx-dropdown__item {
+  transition: none !important;
+}
+
+/* ── Light theme scrollbar overrides ── */
+html[data-theme="light"]::-webkit-scrollbar-thumb {
+  background: var(--vx-border-strong);
+}
+html[data-theme="light"]::-webkit-scrollbar-thumb:hover {
+  background: var(--vx-text-muted);
+}
+
+/* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
 body { font-family: var(--vx-font-sans); font-size: var(--vx-text-base); line-height: var(--vx-leading-normal); color: var(--vx-text-primary); background-color: var(--vx-bg-primary); min-height: 100vh; overflow-x: hidden; }
 ::selection { background: var(--vx-accent-muted); color: var(--vx-text-primary); }
-::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--vx-border-strong); border-radius: var(--vx-radius-full); }
 ::-webkit-scrollbar-thumb:hover { background: var(--vx-text-muted); }
-:focus-visible { outline: 2px solid var(--vx-accent); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--vx-accent); outline-offset: 3px; border-radius: var(--vx-radius-4); }
+
+/* ── Accessibility ── */
 .vx-skip-link { position: absolute; top: -100%; left: var(--vx-space-4); z-index: calc(var(--vx-z-tooltip) + 1); padding: var(--vx-space-3) var(--vx-space-6); background: var(--vx-accent); color: var(--vx-text-inverse); font-size: var(--vx-text-sm); font-weight: var(--vx-weight-medium); border-radius: var(--vx-radius-6); text-decoration: none; transition: top var(--vx-transition-fast); }
 .vx-skip-link:focus { top: var(--vx-space-4); }
-h1, h2, h3, h4, h5, h6 { font-weight: var(--vx-weight-semibold); line-height: var(--vx-leading-tight); color: var(--vx-text-primary); letter-spacing: -0.01em; }
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 { font-weight: var(--vx-weight-semibold); line-height: var(--vx-leading-tight); color: var(--vx-text-primary); letter-spacing: -0.02em; text-wrap: balance; }
 h1 { font-size: var(--vx-text-4xl); } h2 { font-size: var(--vx-text-3xl); } h3 { font-size: var(--vx-text-2xl); } h4 { font-size: var(--vx-text-xl); } h5 { font-size: var(--vx-text-lg); } h6 { font-size: var(--vx-text-base); }
-p { color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); }
+p { color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); text-wrap: pretty; }
 a { color: var(--vx-accent); text-decoration: none; transition: color var(--vx-transition-fast); }
 a:hover { color: var(--vx-accent-hover); }
 hr { border: none; height: 1px; background: var(--vx-border-default); margin: var(--vx-space-8) 0; }
+
+/* ── Utilities ── */
 .vx-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .vx-text-primary { color: var(--vx-text-primary); }
 .vx-text-secondary { color: var(--vx-text-secondary); }
@@ -154,6 +296,8 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-weight-semibold { font-weight: var(--vx-weight-semibold); }
 .vx-weight-bold { font-weight: var(--vx-weight-bold); }
 .vx-uppercase { text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ── Layout ── */
 .vx-container { width: 100%; max-width: var(--vx-container-max); margin-left: auto; margin-right: auto; padding-left: var(--vx-space-6); padding-right: var(--vx-space-6); }
 .vx-container-narrow { max-width: var(--vx-container-narrow); }
 .vx-grid { display: grid; gap: var(--vx-space-6); }
@@ -178,53 +322,60 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-gap-8 { gap: var(--vx-space-8); }
 .vx-section { padding-top: var(--vx-space-16); padding-bottom: var(--vx-space-16); }
 
+/* ── Shell ── */
 .vx-shell { display: flex; min-height: 100vh; }
 .vx-sidebar { width: var(--vx-sidebar-width); background: var(--vx-bg-secondary); border-right: 1px solid var(--vx-border-subtle); display: flex; flex-direction: column; flex-shrink: 0; transition: transform var(--vx-transition-slow); }
 .vx-sidebar__header { height: var(--vx-header-height); display: flex; align-items: center; padding: 0 var(--vx-space-6); border-bottom: 1px solid var(--vx-border-subtle); }
-.vx-sidebar__nav { flex: 1; overflow-y: auto; padding: var(--vx-space-4) var(--vx-space-4); }
+.vx-sidebar__nav { flex: 1; overflow-y: auto; padding: var(--vx-space-4); }
 .vx-sidebar__footer { padding: var(--vx-space-4); border-top: 1px solid var(--vx-border-subtle); }
 .vx-main { flex: 1; display: flex; flex-direction: column; min-width: 0; overflow-x: hidden; }
 .vx-topbar { height: var(--vx-header-height); background: var(--vx-bg-secondary); border-bottom: 1px solid var(--vx-border-subtle); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--vx-space-6); position: sticky; top: 0; z-index: var(--vx-z-sticky); }
 .vx-content { flex: 1; padding: var(--vx-space-6); overflow-y: auto; }
 
+/* ── Public Header ── */
 .vx-public-header { position: fixed; top: 0; left: 0; right: 0; z-index: var(--vx-z-sticky); height: var(--vx-header-height); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--vx-space-8); background: transparent; border-bottom: 1px solid transparent; transition: background var(--vx-transition-slow), border-color var(--vx-transition-slow), backdrop-filter var(--vx-transition-slow); }
-.vx-public-header--scrolled { background: rgba(10,10,12,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--vx-border-subtle); }
-.vx-public-header__logo { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-bold); letter-spacing: 0.12em; color: var(--vx-text-primary); text-transform: uppercase; text-decoration: none; }
+.vx-public-header--scrolled { background: var(--vx-bg-secondary); backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2); border-bottom-color: var(--vx-border-subtle); }
+.vx-public-header__logo { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-bold); letter-spacing: 0.14em; color: var(--vx-text-primary); text-transform: uppercase; text-decoration: none; }
 .vx-public-header__logo:hover { color: var(--vx-text-primary); }
 .vx-public-header__nav { display: flex; align-items: center; gap: var(--vx-space-8); }
-.vx-public-header__nav a { font-size: var(--vx-text-sm); font-weight: var(--vx-weight-medium); color: var(--vx-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; transition: color var(--vx-transition-fast); text-decoration: none; }
+.vx-public-header__nav a { font-size: var(--vx-text-sm); font-weight: var(--vx-weight-medium); color: var(--vx-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; transition: color var(--vx-transition-fast); text-decoration: none; position: relative; }
+.vx-public-header__nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--vx-accent); transition: width var(--vx-transition-default); }
 .vx-public-header__nav a:hover, .vx-public-header__nav a[aria-current="page"] { color: var(--vx-text-primary); }
+.vx-public-header__nav a:hover::after, .vx-public-header__nav a[aria-current="page"]::after { width: 100%; }
 .vx-public-header__actions { display: flex; align-items: center; gap: var(--vx-space-4); }
 
-.vx-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--vx-space-2); padding: var(--vx-space-3) var(--vx-space-6); font-family: inherit; font-size: var(--vx-text-sm); font-weight: var(--vx-weight-medium); line-height: var(--vx-leading-none); color: var(--vx-text-primary); background: var(--vx-surface); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-6); cursor: pointer; white-space: nowrap; transition: all var(--vx-transition-fast); position: relative; overflow: hidden; }
-.vx-btn:hover { background: var(--vx-surface-hover); border-color: var(--vx-border-strong); }
-.vx-btn:active { transform: translateY(1px); }
-.vx-btn:disabled, .vx-btn[aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+/* ── Buttons ── */
+.vx-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--vx-space-2); padding: var(--vx-space-3) var(--vx-space-6); font-family: inherit; font-size: var(--vx-text-sm); font-weight: var(--vx-weight-medium); line-height: var(--vx-leading-none); color: var(--vx-text-primary); background: var(--vx-surface); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-6); cursor: pointer; white-space: nowrap; transition: all var(--vx-transition-default); position: relative; overflow: hidden; }
+.vx-btn:hover { background: var(--vx-surface-hover); border-color: var(--vx-border-strong); transform: translateY(-1px); }
+.vx-btn:active { transform: translateY(0); }
+.vx-btn:disabled, .vx-btn[aria-disabled="true"] { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
 .vx-btn--primary { background: var(--vx-accent); color: var(--vx-text-inverse); border-color: var(--vx-accent); }
-.vx-btn--primary:hover { background: var(--vx-accent-hover); border-color: var(--vx-accent-hover); box-shadow: var(--vx-shadow-accent); }
+.vx-btn--primary:hover { background: var(--vx-accent-hover); border-color: var(--vx-accent-hover); box-shadow: var(--vx-shadow-accent); transform: translateY(-1px); }
 .vx-btn--secondary { background: var(--vx-accent-muted); color: var(--vx-accent); border-color: transparent; }
-.vx-btn--secondary:hover { background: rgba(107,159,168,0.20); }
+.vx-btn--secondary:hover { background: rgba(107,159,168,0.18); transform: translateY(-1px); }
 .vx-btn--ghost { background: transparent; border-color: transparent; color: var(--vx-text-secondary); }
-.vx-btn--ghost:hover { background: var(--vx-border-subtle); color: var(--vx-text-primary); }
+.vx-btn--ghost:hover { background: var(--vx-border-subtle); color: var(--vx-text-primary); transform: translateY(-1px); }
 .vx-btn--danger { background: var(--vx-danger); color: #fff; border-color: var(--vx-danger); }
-.vx-btn--danger:hover { background: #d46e6e; border-color: #d46e6e; }
+.vx-btn--danger:hover { background: #d46e6e; border-color: #d46e6e; transform: translateY(-1px); }
 .vx-btn--void { background: var(--vx-void); color: #fff; border-color: var(--vx-void); }
-.vx-btn--void:hover { background: #9c8dc4; border-color: #9c8dc4; }
+.vx-btn--void:hover { background: #a899d4; border-color: #a899d4; transform: translateY(-1px); }
 .vx-btn--sm { padding: var(--vx-space-2) var(--vx-space-4); font-size: var(--vx-text-xs); border-radius: var(--vx-radius-4); }
 .vx-btn--lg { padding: var(--vx-space-4) var(--vx-space-8); font-size: var(--vx-text-base); border-radius: var(--vx-radius-8); }
 .vx-btn--icon { padding: var(--vx-space-3); aspect-ratio: 1; }
 
-.vx-card { background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-8); overflow: hidden; transition: border-color var(--vx-transition-fast), box-shadow var(--vx-transition-fast); }
-.vx-card:hover { border-color: var(--vx-border-strong); }
+/* ── Cards ── */
+.vx-card { background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-8); overflow: hidden; transition: border-color var(--vx-transition-fast), box-shadow var(--vx-transition-fast), transform var(--vx-transition-fast); }
+.vx-card:hover { border-color: var(--vx-border-strong); box-shadow: var(--vx-shadow-medium); transform: translateY(-1px); }
 .vx-card__header { padding: var(--vx-space-6); border-bottom: 1px solid var(--vx-border-subtle); display: flex; align-items: center; justify-content: space-between; }
 .vx-card__body { padding: var(--vx-space-6); }
-.vx-card__footer { padding: var(--vx-space-4) var(--vx-space-6); border-top: 1px solid var(--vx-border-subtle); background: rgba(0,0,0,0.15); }
+.vx-card__footer { padding: var(--vx-space-4) var(--vx-space-6); border-top: 1px solid var(--vx-border-subtle); background: rgba(0,0,0,0.12); }
 .vx-card--public { background: var(--vx-bg-secondary); border-color: var(--vx-border-subtle); border-radius: var(--vx-radius-16); }
 .vx-card--public .vx-card__header { padding: var(--vx-space-8); }
 .vx-card--public .vx-card__body { padding: var(--vx-space-8); }
 .vx-card--private { background: var(--vx-bg-elevated); border-color: var(--vx-border-default); border-radius: var(--vx-radius-8); }
-.vx-card--public:hover { box-shadow: var(--vx-shadow-medium); }
+.vx-card--public:hover { box-shadow: var(--vx-shadow-medium); transform: translateY(-2px); }
 
+/* ── Badges ── */
 .vx-badge { display: inline-flex; align-items: center; gap: var(--vx-space-2); padding: var(--vx-space-1) var(--vx-space-3); font-size: var(--vx-text-2xs); font-weight: var(--vx-weight-semibold); text-transform: uppercase; letter-spacing: 0.08em; border-radius: var(--vx-radius-full); line-height: 1; white-space: nowrap; }
 .vx-badge--void { background: var(--vx-void-muted); color: var(--vx-void); }
 .vx-badge--admin { background: var(--vx-admin-muted); color: var(--vx-admin); }
@@ -234,19 +385,22 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-badge--danger { background: var(--vx-danger-muted); color: var(--vx-danger); }
 .vx-badge--info { background: var(--vx-info-muted); color: var(--vx-info); }
 .vx-badge--outline { background: transparent; border: 1px solid currentColor; }
-.vx-badge__dot { width: 6px; height: 6px; border-radius: var(--vx-radius-full); background: currentColor; }
+.vx-badge__dot { width: 5px; height: 5px; border-radius: var(--vx-radius-full); background: currentColor; }
 
+/* ── Forms ── */
 .vx-label { display: block; font-size: var(--vx-text-xs); font-weight: var(--vx-weight-medium); color: var(--vx-text-secondary); margin-bottom: var(--vx-space-2); text-transform: uppercase; letter-spacing: 0.06em; }
-.vx-input, .vx-textarea, .vx-select { width: 100%; padding: var(--vx-space-3) var(--vx-space-4); font-family: inherit; font-size: var(--vx-text-sm); color: var(--vx-text-primary); background: var(--vx-bg-tertiary); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-6); transition: border-color var(--vx-transition-fast), box-shadow var(--vx-transition-fast); outline: none; }
+.vx-input, .vx-textarea, .vx-select { width: 100%; padding: var(--vx-space-3) var(--vx-space-4); font-family: inherit; font-size: var(--vx-text-sm); color: var(--vx-text-primary); background: var(--vx-bg-tertiary); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-6); transition: border-color var(--vx-transition-fast), box-shadow var(--vx-transition-fast); outline: none; caret-color: var(--vx-accent); }
 .vx-input::placeholder, .vx-textarea::placeholder { color: var(--vx-text-muted); }
 .vx-input:hover, .vx-textarea:hover, .vx-select:hover { border-color: var(--vx-border-strong); }
 .vx-input:focus, .vx-textarea:focus, .vx-select:focus { border-color: var(--vx-accent); box-shadow: 0 0 0 3px var(--vx-accent-muted); }
 .vx-input:disabled, .vx-textarea:disabled, .vx-select:disabled { opacity: 0.5; cursor: not-allowed; }
 .vx-textarea { min-height: 100px; resize: vertical; line-height: var(--vx-leading-normal); }
-.vx-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 5L6 8L9 5' stroke='%236e6e7a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right var(--vx-space-4) center; padding-right: var(--vx-space-10); }
+.vx-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 5L6 8L9 5' stroke='%236e6e7c' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right var(--vx-space-4) center; padding-right: var(--vx-space-10); }
 .vx-form-group { margin-bottom: var(--vx-space-6); }
 .vx-form-hint { font-size: var(--vx-text-xs); color: var(--vx-text-tertiary); margin-top: var(--vx-space-2); }
 .vx-form-error { font-size: var(--vx-text-xs); color: var(--vx-danger); margin-top: var(--vx-space-2); }
+
+/* ── Checkbox & Toggle ── */
 .vx-checkbox { display: flex; align-items: center; gap: var(--vx-space-3); cursor: pointer; font-size: var(--vx-text-sm); color: var(--vx-text-secondary); }
 .vx-checkbox input { appearance: none; width: 16px; height: 16px; border: 1px solid var(--vx-border-strong); border-radius: var(--vx-radius-4); background: var(--vx-bg-tertiary); cursor: pointer; transition: all var(--vx-transition-fast); flex-shrink: 0; position: relative; }
 .vx-checkbox input:checked { background: var(--vx-accent); border-color: var(--vx-accent); }
@@ -254,33 +408,38 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-checkbox input:focus-visible { box-shadow: 0 0 0 3px var(--vx-accent-muted); }
 .vx-toggle { display: flex; align-items: center; gap: var(--vx-space-3); cursor: pointer; font-size: var(--vx-text-sm); color: var(--vx-text-secondary); }
 .vx-toggle__switch { position: relative; width: 36px; height: 20px; background: var(--vx-border-strong); border-radius: var(--vx-radius-full); transition: background var(--vx-transition-fast); flex-shrink: 0; }
-.vx-toggle__switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: var(--vx-text-primary); border-radius: var(--vx-radius-full); transition: transform var(--vx-transition-fast); }
+.vx-toggle__switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: var(--vx-text-primary); border-radius: var(--vx-radius-full); transition: transform var(--vx-transition-fast); box-shadow: 0 1px 2px rgba(0,0,0,0.3); }
 .vx-toggle input { appearance: none; position: absolute; opacity: 0; }
 .vx-toggle input:checked + .vx-toggle__switch { background: var(--vx-accent); }
 .vx-toggle input:checked + .vx-toggle__switch::after { transform: translateX(16px); }
 .vx-toggle input:focus-visible + .vx-toggle__switch { box-shadow: 0 0 0 3px var(--vx-accent-muted); }
 
+/* ── Navigation ── */
 .vx-nav { list-style: none; }
-.vx-nav-item { display: flex; align-items: center; gap: var(--vx-space-3); padding: var(--vx-space-3) var(--vx-space-4); font-size: var(--vx-text-sm); font-weight: var(--vx-weight-medium); color: var(--vx-text-secondary); border-radius: var(--vx-radius-6); cursor: pointer; transition: all var(--vx-transition-fast); text-decoration: none; border: none; background: none; width: 100%; text-align: left; font-family: inherit; }
+.vx-nav-item { display: flex; align-items: center; gap: var(--vx-space-3); padding: var(--vx-space-3) var(--vx-space-4); font-size: var(--vx-text-sm); font-weight: var(--vx-weight-medium); color: var(--vx-text-secondary); border-radius: var(--vx-radius-6); cursor: pointer; transition: all var(--vx-transition-fast); text-decoration: none; border: none; background: none; width: 100%; text-align: left; font-family: inherit; position: relative; }
 .vx-nav-item:hover { background: var(--vx-border-subtle); color: var(--vx-text-primary); }
 .vx-nav-item--active { background: var(--vx-accent-muted); color: var(--vx-accent); }
-.vx-nav-item--active:hover { background: rgba(107,159,168,0.18); }
-.vx-nav-item__icon { width: 18px; height: 18px; opacity: 0.7; flex-shrink: 0; }
+.vx-nav-item--active::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 18px; background: var(--vx-accent); border-radius: 0 var(--vx-radius-full) var(--vx-radius-full) 0; }
+.vx-nav-item--active:hover { background: rgba(107,159,168,0.15); }
+.vx-nav-item__icon { width: 18px; height: 18px; opacity: 0.5; flex-shrink: 0; }
 .vx-nav-item--active .vx-nav-item__icon { opacity: 1; }
 
+/* ── Tabs ── */
 .vx-tabs { display: flex; gap: var(--vx-space-1); border-bottom: 1px solid var(--vx-border-default); padding: 0 var(--vx-space-2); }
-.vx-tab { padding: var(--vx-space-3) var(--vx-space-4); font-family: inherit; font-size: var(--vx-text-sm); font-weight: var(--vx-weight-medium); color: var(--vx-text-tertiary); background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; transition: all var(--vx-transition-fast); white-space: nowrap; }
+.vx-tab { padding: var(--vx-space-3) var(--vx-space-4); font-family: inherit; font-size: var(--vx-text-sm); font-weight: var(--vx-weight-medium); color: var(--vx-text-tertiary); background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; transition: all var(--vx-transition-fast); white-space: nowrap; position: relative; }
 .vx-tab:hover { color: var(--vx-text-secondary); }
 .vx-tab--active { color: var(--vx-accent); border-bottom-color: var(--vx-accent); }
 
+/* ── Breadcrumbs ── */
 .vx-breadcrumbs { display: flex; align-items: center; gap: var(--vx-space-2); font-size: var(--vx-text-xs); color: var(--vx-text-tertiary); }
 .vx-breadcrumbs a { color: var(--vx-text-tertiary); }
 .vx-breadcrumbs a:hover { color: var(--vx-text-secondary); }
 .vx-breadcrumbs__sep { color: var(--vx-text-muted); }
 
-.vx-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.70); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: var(--vx-z-modal); display: flex; align-items: center; justify-content: center; padding: var(--vx-space-6); opacity: 0; visibility: hidden; transition: opacity var(--vx-transition-slow), visibility var(--vx-transition-slow); }
+/* ── Modal ── */
+.vx-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px) saturate(1.1); -webkit-backdrop-filter: blur(8px) saturate(1.1); z-index: var(--vx-z-modal); display: flex; align-items: center; justify-content: center; padding: var(--vx-space-6); opacity: 0; visibility: hidden; transition: opacity var(--vx-transition-slow), visibility var(--vx-transition-slow); }
 .vx-modal-overlay--open { opacity: 1; visibility: visible; }
-.vx-modal { background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-12); width: 100%; max-width: 520px; max-height: calc(100vh - var(--vx-space-12)); overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--vx-shadow-large); transform: translateY(12px) scale(0.98); transition: transform var(--vx-transition-slow); }
+.vx-modal { background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-12); width: 100%; max-width: 520px; max-height: calc(100vh - var(--vx-space-12)); overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--vx-shadow-large); transform: translateY(16px) scale(0.97); transition: transform var(--vx-transition-slow); }
 .vx-modal-overlay--open .vx-modal { transform: translateY(0) scale(1); }
 .vx-modal__header { padding: var(--vx-space-6); border-bottom: 1px solid var(--vx-border-subtle); display: flex; align-items: center; justify-content: space-between; }
 .vx-modal__title { font-size: var(--vx-text-lg); font-weight: var(--vx-weight-semibold); }
@@ -292,10 +451,11 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-modal--lg { max-width: 720px; }
 .vx-modal--xl { max-width: 960px; }
 
+/* ── Toast ── */
 .vx-toast-container { position: fixed; top: var(--vx-space-6); right: var(--vx-space-6); z-index: var(--vx-z-toast); display: flex; flex-direction: column; gap: var(--vx-space-3); max-width: 400px; pointer-events: none; }
-.vx-toast { pointer-events: auto; display: flex; align-items: flex-start; gap: var(--vx-space-4); padding: var(--vx-space-4) var(--vx-space-6); background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-8); box-shadow: var(--vx-shadow-medium); transform: translateX(120%); opacity: 0; transition: transform var(--vx-transition-slow), opacity var(--vx-transition-slow); }
+.vx-toast { pointer-events: auto; display: flex; align-items: flex-start; gap: var(--vx-space-4); padding: var(--vx-space-4) var(--vx-space-6); background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-8); box-shadow: var(--vx-shadow-large); transform: translateX(120%); opacity: 0; transition: transform var(--vx-transition-slow), opacity var(--vx-transition-slow); }
 .vx-toast--show { transform: translateX(0); opacity: 1; }
-.vx-toast__icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+.vx-toast__icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
 .vx-toast__content { flex: 1; min-width: 0; }
 .vx-toast__title { font-size: var(--vx-text-sm); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-1); }
 .vx-toast__message { font-size: var(--vx-text-xs); color: var(--vx-text-secondary); line-height: var(--vx-leading-snug); }
@@ -306,24 +466,25 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-toast--danger { border-left: 3px solid var(--vx-danger); }
 .vx-toast--info { border-left: 3px solid var(--vx-info); }
 
+/* ── Animations ── */
 @keyframes vx-fade-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes vx-fade-in-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes vx-fade-in-down { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes vx-fade-in-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes vx-fade-in-down { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes vx-scale-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
 @keyframes vx-slide-in-right { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes vx-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 @keyframes vx-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-.vx-animate-fade-in { animation: vx-fade-in 0.4s ease forwards; }
-.vx-animate-fade-in-up { animation: vx-fade-in-up 0.4s ease forwards; }
-.vx-animate-fade-in-down { animation: vx-fade-in-down 0.4s ease forwards; }
-.vx-animate-scale-in { animation: vx-scale-in 0.3s ease forwards; }
-.vx-animate-slide-in-right { animation: vx-slide-in-right 0.4s ease forwards; }
-.vx-stagger-1 { animation-delay: 0.05s; }
-.vx-stagger-2 { animation-delay: 0.10s; }
-.vx-stagger-3 { animation-delay: 0.15s; }
-.vx-stagger-4 { animation-delay: 0.20s; }
-.vx-stagger-5 { animation-delay: 0.25s; }
+.vx-animate-fade-in { animation: vx-fade-in 0.45s ease forwards; }
+.vx-animate-fade-in-up { animation: vx-fade-in-up 0.45s ease forwards; }
+.vx-animate-fade-in-down { animation: vx-fade-in-down 0.45s ease forwards; }
+.vx-animate-scale-in { animation: vx-scale-in 0.35s ease forwards; }
+.vx-animate-slide-in-right { animation: vx-slide-in-right 0.45s ease forwards; }
+.vx-stagger-1 { animation-delay: 0.06s; }
+.vx-stagger-2 { animation-delay: 0.12s; }
+.vx-stagger-3 { animation-delay: 0.18s; }
+.vx-stagger-4 { animation-delay: 0.24s; }
+.vx-stagger-5 { animation-delay: 0.30s; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
@@ -331,18 +492,20 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
   .vx-toast { transform: none !important; }
 }
 
-.vx-focus-ring:focus-visible { outline: 2px solid var(--vx-accent); outline-offset: 2px; }
+.vx-focus-ring:focus-visible { outline: 2px solid var(--vx-accent); outline-offset: 3px; }
 
 @media (prefers-contrast: high) {
-  :root { --vx-border-default: rgba(255,255,255,0.25); --vx-text-secondary: #c0c0cc; --vx-text-tertiary: #90909c; }
+  :root { --vx-border-default: rgba(255,255,255,0.28); --vx-text-secondary: #c4c4d0; --vx-text-tertiary: #9898a6; }
+  html[data-theme="light"] { --vx-border-default: rgba(0,0,0,0.28); --vx-text-secondary: #2a2a30; --vx-text-tertiary: #555560; }
 }
 
+/* ── Responsive Base ── */
 @media (max-width: 1024px) { .vx-grid--4 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) {
   .vx-grid--2, .vx-grid--3, .vx-grid--4 { grid-template-columns: 1fr; }
   .vx-sidebar { position: fixed; left: 0; top: 0; bottom: 0; z-index: var(--vx-nav-mobile); transform: translateX(-100%); }
   .vx-sidebar--open { transform: translateX(0); }
-  .vx-sidebar__backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.60); z-index: calc(var(--vx-nav-mobile) - 1); opacity: 0; visibility: hidden; transition: opacity var(--vx-transition-slow), visibility var(--vx-transition-slow); }
+  .vx-sidebar__backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: calc(var(--vx-nav-mobile) - 1); opacity: 0; visibility: hidden; transition: opacity var(--vx-transition-slow), visibility var(--vx-transition-slow); }
   .vx-sidebar__backdrop--open { opacity: 1; visibility: visible; }
   .vx-public-header__nav { display: none; }
   .vx-modal { max-width: 100%; margin: var(--vx-space-4); }
@@ -350,7 +513,7 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 }
 
 /* ============================================================
-   PHASE 1 — PUBLIC FOUNDATION EXTENSIONS (PRESERVED)
+   PHASE 1 — PUBLIC FOUNDATION EXTENSIONS
    ============================================================ */
 .vx-public-page { min-height: 100vh; display: flex; flex-direction: column; }
 .vx-public-main { flex: 1; }
@@ -375,11 +538,11 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-public-editorial--4-8 > :last-child { grid-column: span 8; }
 .vx-public-editorial--6-6 > * { grid-column: span 6; }
 
-.vx-display-1 { font-size: clamp(var(--vx-text-5xl), 8vw, var(--vx-text-7xl)); font-weight: var(--vx-weight-bold); line-height: var(--vx-leading-tight); letter-spacing: -0.03em; color: var(--vx-text-primary); }
-.vx-display-2 { font-size: clamp(var(--vx-text-4xl), 5vw, var(--vx-text-6xl)); font-weight: var(--vx-weight-bold); line-height: var(--vx-leading-tight); letter-spacing: -0.02em; color: var(--vx-text-primary); }
-.vx-display-3 { font-size: clamp(var(--vx-text-3xl), 4vw, var(--vx-text-5xl)); font-weight: var(--vx-weight-semibold); line-height: var(--vx-leading-snug); letter-spacing: -0.01em; color: var(--vx-text-primary); }
-.vx-editorial-body { font-size: var(--vx-text-base); line-height: var(--vx-leading-relaxed); color: var(--vx-text-secondary); }
-.vx-editorial-body-lg { font-size: var(--vx-text-lg); line-height: var(--vx-leading-relaxed); color: var(--vx-text-secondary); }
+.vx-display-1 { font-size: clamp(var(--vx-text-5xl), 8vw, var(--vx-text-7xl)); font-weight: var(--vx-weight-bold); line-height: var(--vx-leading-tight); letter-spacing: -0.035em; color: var(--vx-text-primary); text-wrap: balance; }
+.vx-display-2 { font-size: clamp(var(--vx-text-4xl), 5vw, var(--vx-text-6xl)); font-weight: var(--vx-weight-bold); line-height: var(--vx-leading-tight); letter-spacing: -0.03em; color: var(--vx-text-primary); text-wrap: balance; }
+.vx-display-3 { font-size: clamp(var(--vx-text-3xl), 4vw, var(--vx-text-5xl)); font-weight: var(--vx-weight-semibold); line-height: var(--vx-leading-snug); letter-spacing: -0.02em; color: var(--vx-text-primary); text-wrap: balance; }
+.vx-editorial-body { font-size: var(--vx-text-base); line-height: var(--vx-leading-relaxed); color: var(--vx-text-secondary); text-wrap: pretty; }
+.vx-editorial-body-lg { font-size: var(--vx-text-lg); line-height: var(--vx-leading-relaxed); color: var(--vx-text-secondary); text-wrap: pretty; }
 .vx-eyebrow { font-family: var(--vx-font-mono); font-size: var(--vx-text-xs); font-weight: var(--vx-weight-medium); text-transform: uppercase; letter-spacing: 0.12em; color: var(--vx-text-muted); margin-bottom: var(--vx-space-4); }
 .vx-eyebrow--accent { color: var(--vx-accent); }
 .vx-metadata { font-family: var(--vx-font-mono); font-size: var(--vx-text-2xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--vx-text-muted); }
@@ -393,7 +556,7 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-mobile-drawer__nav a { display: block; padding: var(--vx-space-4) 0; font-size: var(--vx-text-lg); font-weight: var(--vx-weight-medium); color: var(--vx-text-secondary); text-decoration: none; border-bottom: 1px solid var(--vx-border-subtle); transition: color var(--vx-transition-fast); }
 .vx-mobile-drawer__nav a:hover, .vx-mobile-drawer__nav a[aria-current="page"] { color: var(--vx-text-primary); }
 .vx-mobile-drawer__footer { padding: var(--vx-space-6); border-top: 1px solid var(--vx-border-subtle); }
-.vx-mobile-drawer__backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.60); z-index: calc(var(--vx-nav-mobile) - 1); opacity: 0; visibility: hidden; transition: opacity var(--vx-transition-slow), visibility var(--vx-transition-slow); }
+.vx-mobile-drawer__backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: calc(var(--vx-nav-mobile) - 1); opacity: 0; visibility: hidden; transition: opacity var(--vx-transition-slow), visibility var(--vx-transition-slow); }
 .vx-mobile-drawer__backdrop--open { opacity: 1; visibility: visible; }
 .vx-mobile-menu-btn { display: none; background: none; border: none; color: var(--vx-text-primary); cursor: pointer; padding: var(--vx-space-2); border-radius: var(--vx-radius-4); }
 .vx-mobile-menu-btn:hover { background: var(--vx-border-subtle); }
@@ -403,38 +566,38 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-hero__content { position: relative; z-index: 2; max-width: 900px; }
 .vx-hero__eyebrow { margin-bottom: var(--vx-space-6); }
 .vx-hero__title { margin-bottom: var(--vx-space-6); }
-.vx-hero__subtitle { font-size: clamp(var(--vx-text-base), 2vw, var(--vx-text-xl)); line-height: var(--vx-leading-relaxed); color: var(--vx-text-secondary); max-width: 560px; margin-bottom: var(--vx-space-10); }
+.vx-hero__subtitle { font-size: clamp(var(--vx-text-base), 2vw, var(--vx-text-xl)); line-height: var(--vx-leading-relaxed); color: var(--vx-text-secondary); max-width: 560px; margin-bottom: var(--vx-space-10); text-wrap: pretty; }
 .vx-hero__meta { font-family: var(--vx-font-mono); font-size: var(--vx-text-xs); color: var(--vx-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--vx-space-10); }
 .vx-hero__actions { display: flex; align-items: center; gap: var(--vx-space-4); flex-wrap: wrap; }
 .vx-hero__network { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.vx-hero__network canvas { width: 100%; height: 100%; opacity: 0.35; }
+.vx-hero__network canvas { width: 100%; height: 100%; opacity: 0.40; }
 @media (prefers-reduced-motion: reduce) { .vx-hero__network canvas { opacity: 0.15; } }
 
 .vx-section-header { margin-bottom: var(--vx-space-16); }
 .vx-section-header--center { text-align: center; }
 .vx-section-header--center .vx-section-header__subtitle { margin-left: auto; margin-right: auto; }
 .vx-section-header__eyebrow { margin-bottom: var(--vx-space-4); }
-.vx-section-header__title { font-size: clamp(var(--vx-text-3xl), 4vw, var(--vx-text-5xl)); font-weight: var(--vx-weight-bold); line-height: var(--vx-leading-tight); letter-spacing: -0.02em; color: var(--vx-text-primary); margin-bottom: var(--vx-space-6); }
-.vx-section-header__subtitle { font-size: var(--vx-text-lg); line-height: var(--vx-leading-relaxed); color: var(--vx-text-secondary); max-width: 560px; }
+.vx-section-header__title { font-size: clamp(var(--vx-text-3xl), 4vw, var(--vx-text-5xl)); font-weight: var(--vx-weight-bold); line-height: var(--vx-leading-tight); letter-spacing: -0.03em; color: var(--vx-text-primary); margin-bottom: var(--vx-space-6); text-wrap: balance; }
+.vx-section-header__subtitle { font-size: var(--vx-text-lg); line-height: var(--vx-leading-relaxed); color: var(--vx-text-secondary); max-width: 560px; text-wrap: pretty; }
 
 .vx-project-card { background: var(--vx-bg-secondary); border: 1px solid var(--vx-border-subtle); border-radius: var(--vx-radius-16); overflow: hidden; transition: border-color var(--vx-transition-fast), box-shadow var(--vx-transition-fast), transform var(--vx-transition-fast); display: flex; flex-direction: column; }
-.vx-project-card:hover { border-color: var(--vx-border-strong); box-shadow: var(--vx-shadow-medium); transform: translateY(-2px); }
+.vx-project-card:hover { border-color: var(--vx-border-strong); box-shadow: var(--vx-shadow-medium); transform: translateY(-3px); }
 .vx-project-card--featured { grid-column: span 2; }
 .vx-project-card__image { aspect-ratio: 16 / 9; background: var(--vx-bg-tertiary); position: relative; overflow: hidden; }
 .vx-project-card__image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, var(--vx-bg-secondary) 100%); }
 .vx-project-card__image-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: var(--vx-font-mono); font-size: var(--vx-text-xs); color: var(--vx-text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
 .vx-project-card__content { padding: var(--vx-space-8); flex: 1; display: flex; flex-direction: column; }
 .vx-project-card__meta { display: flex; align-items: center; gap: var(--vx-space-3); margin-bottom: var(--vx-space-4); flex-wrap: wrap; }
-.vx-project-card__title { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-3); line-height: var(--vx-leading-snug); }
-.vx-project-card__desc { font-size: var(--vx-text-sm); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-6); flex: 1; }
+.vx-project-card__title { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-3); line-height: var(--vx-leading-snug); text-wrap: balance; }
+.vx-project-card__desc { font-size: var(--vx-text-sm); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-6); flex: 1; text-wrap: pretty; }
 .vx-project-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: var(--vx-space-4); border-top: 1px solid var(--vx-border-subtle); }
 .vx-project-card__footer-meta { font-family: var(--vx-font-mono); font-size: var(--vx-text-2xs); color: var(--vx-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-.vx-rnd-card { background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-12); padding: var(--vx-space-8); transition: border-color var(--vx-transition-fast), box-shadow var(--vx-transition-fast); height: 100%; display: flex; flex-direction: column; }
-.vx-rnd-card:hover { border-color: var(--vx-border-strong); box-shadow: var(--vx-shadow-medium); }
+.vx-rnd-card { background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-12); padding: var(--vx-space-8); transition: border-color var(--vx-transition-fast), box-shadow var(--vx-transition-fast), transform var(--vx-transition-fast); height: 100%; display: flex; flex-direction: column; }
+.vx-rnd-card:hover { border-color: var(--vx-border-strong); box-shadow: var(--vx-shadow-medium); transform: translateY(-2px); }
 .vx-rnd-card__meta { display: flex; align-items: center; gap: var(--vx-space-3); margin-bottom: var(--vx-space-6); flex-wrap: wrap; }
-.vx-rnd-card__title { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-4); line-height: var(--vx-leading-snug); }
-.vx-rnd-card__summary { font-size: var(--vx-text-sm); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-6); flex: 1; }
+.vx-rnd-card__title { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-4); line-height: var(--vx-leading-snug); text-wrap: balance; }
+.vx-rnd-card__summary { font-size: var(--vx-text-sm); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-6); flex: 1; text-wrap: pretty; }
 .vx-rnd-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: var(--vx-space-4); border-top: 1px solid var(--vx-border-subtle); }
 .vx-rnd-card__footer-meta { font-family: var(--vx-font-mono); font-size: var(--vx-text-2xs); color: var(--vx-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
@@ -442,30 +605,31 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-journal-card:first-child { padding-top: 0; }
 .vx-journal-card:hover { padding-left: var(--vx-space-2); }
 .vx-journal-card__meta { display: flex; align-items: center; gap: var(--vx-space-4); margin-bottom: var(--vx-space-3); flex-wrap: wrap; }
-.vx-journal-card__title { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-3); line-height: var(--vx-leading-snug); transition: color var(--vx-transition-fast); }
+.vx-journal-card__title { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-3); line-height: var(--vx-leading-snug); transition: color var(--vx-transition-fast); text-wrap: balance; }
 .vx-journal-card:hover .vx-journal-card__title { color: var(--vx-accent); }
-.vx-journal-card__excerpt { font-size: var(--vx-text-sm); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-3); max-width: 640px; }
+.vx-journal-card__excerpt { font-size: var(--vx-text-sm); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-3); max-width: 640px; text-wrap: pretty; }
 .vx-journal-card__read { font-family: var(--vx-font-mono); font-size: var(--vx-text-2xs); color: var(--vx-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
 .vx-ecosystem { position: relative; }
 .vx-ecosystem__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--vx-space-6); position: relative; z-index: 2; }
 .vx-ecosystem-node { background: var(--vx-bg-secondary); border: 1px solid var(--vx-border-subtle); border-radius: var(--vx-radius-16); padding: var(--vx-space-10); text-align: center; transition: border-color var(--vx-transition-fast), box-shadow var(--vx-transition-fast), transform var(--vx-transition-fast); position: relative; }
 .vx-ecosystem-node:hover { border-color: var(--vx-border-strong); box-shadow: var(--vx-shadow-medium); transform: translateY(-4px); }
-.vx-ecosystem-node__icon { width: 48px; height: 48px; margin: 0 auto var(--vx-space-6); display: flex; align-items: center; justify-content: center; border-radius: var(--vx-radius-12); background: var(--vx-bg-tertiary); border: 1px solid var(--vx-border-default); color: var(--vx-accent); }
-.vx-ecosystem-node__title { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-3); }
-.vx-ecosystem-node__desc { font-size: var(--vx-text-sm); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); }
+.vx-ecosystem-node__icon { width: 48px; height: 48px; margin: 0 auto var(--vx-space-6); display: flex; align-items: center; justify-content: center; border-radius: var(--vx-radius-12); background: var(--vx-bg-tertiary); border: 1px solid var(--vx-border-default); color: var(--vx-accent); transition: transform var(--vx-transition-fast); }
+.vx-ecosystem-node:hover .vx-ecosystem-node__icon { transform: scale(1.08); }
+.vx-ecosystem-node__title { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-3); text-wrap: balance; }
+.vx-ecosystem-node__desc { font-size: var(--vx-text-sm); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); text-wrap: pretty; }
 .vx-ecosystem-connector { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--vx-border-default), transparent); z-index: 1; }
 
 .vx-cta { text-align: center; padding: var(--vx-space-24) var(--vx-space-8); border-top: 1px solid var(--vx-border-subtle); border-bottom: 1px solid var(--vx-border-subtle); position: relative; overflow: hidden; }
-.vx-cta__title { font-size: clamp(var(--vx-text-3xl), 5vw, var(--vx-text-5xl)); font-weight: var(--vx-weight-bold); line-height: var(--vx-leading-tight); letter-spacing: -0.02em; color: var(--vx-text-primary); margin-bottom: var(--vx-space-6); max-width: 700px; margin-left: auto; margin-right: auto; }
-.vx-cta__text { font-size: var(--vx-text-lg); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-10); max-width: 520px; margin-left: auto; margin-right: auto; }
+.vx-cta__title { font-size: clamp(var(--vx-text-3xl), 5vw, var(--vx-text-5xl)); font-weight: var(--vx-weight-bold); line-height: var(--vx-leading-tight); letter-spacing: -0.03em; color: var(--vx-text-primary); margin-bottom: var(--vx-space-6); max-width: 700px; margin-left: auto; margin-right: auto; text-wrap: balance; }
+.vx-cta__text { font-size: var(--vx-text-lg); color: var(--vx-text-secondary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-10); max-width: 520px; margin-left: auto; margin-right: auto; text-wrap: pretty; }
 .vx-cta__actions { display: flex; align-items: center; justify-content: center; gap: var(--vx-space-4); flex-wrap: wrap; }
 
 .vx-public-footer { border-top: 1px solid var(--vx-border-subtle); padding: var(--vx-space-16) 0 var(--vx-space-8); }
 .vx-public-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--vx-space-12); margin-bottom: var(--vx-space-16); }
 .vx-public-footer__brand { max-width: 280px; }
-.vx-public-footer__logo { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-bold); letter-spacing: 0.12em; color: var(--vx-text-primary); text-transform: uppercase; margin-bottom: var(--vx-space-4); }
-.vx-public-footer__tagline { font-size: var(--vx-text-sm); color: var(--vx-text-tertiary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-6); }
+.vx-public-footer__logo { font-size: var(--vx-text-xl); font-weight: var(--vx-weight-bold); letter-spacing: 0.14em; color: var(--vx-text-primary); text-transform: uppercase; margin-bottom: var(--vx-space-4); }
+.vx-public-footer__tagline { font-size: var(--vx-text-sm); color: var(--vx-text-tertiary); line-height: var(--vx-leading-relaxed); margin-bottom: var(--vx-space-6); text-wrap: pretty; }
 .vx-public-footer__col-title { font-size: var(--vx-text-xs); font-weight: var(--vx-weight-semibold); text-transform: uppercase; letter-spacing: 0.1em; color: var(--vx-text-muted); margin-bottom: var(--vx-space-4); }
 .vx-public-footer__links { list-style: none; display: flex; flex-direction: column; gap: var(--vx-space-3); }
 .vx-public-footer__links a { font-size: var(--vx-text-sm); color: var(--vx-text-secondary); text-decoration: none; transition: color var(--vx-transition-fast); }
@@ -474,12 +638,12 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 .vx-public-footer__copyright { font-family: var(--vx-font-mono); font-size: var(--vx-text-2xs); color: var(--vx-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 .vx-public-footer__meta { font-family: var(--vx-font-mono); font-size: var(--vx-text-2xs); color: var(--vx-text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-.vx-page { opacity: 1; transform: translateY(0); transition: opacity 0.3s ease, transform 0.3s ease; }
-.vx-page--exit { opacity: 0; transform: translateY(8px); }
-.vx-page--enter { opacity: 0; transform: translateY(8px); }
+.vx-page { opacity: 1; transform: translateY(0); transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+.vx-page--exit { opacity: 0; transform: translateY(10px); }
+.vx-page--enter { opacity: 0; transform: translateY(10px); }
 .vx-page--enter-active { opacity: 1; transform: translateY(0); }
 
-.vx-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.vx-reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
 .vx-reveal--visible { opacity: 1; transform: translateY(0); }
 .vx-reveal-delay-1 { transition-delay: 0.1s; }
 .vx-reveal-delay-2 { transition-delay: 0.2s; }
@@ -489,13 +653,14 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 
 .vx-404 { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--vx-space-16) var(--vx-space-8); }
 .vx-404__code { font-family: var(--vx-font-mono); font-size: clamp(var(--vx-text-5xl), 10vw, var(--vx-text-7xl)); font-weight: var(--vx-weight-bold); color: var(--vx-text-muted); line-height: var(--vx-leading-none); margin-bottom: var(--vx-space-6); }
-.vx-404__title { font-size: var(--vx-text-2xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-4); }
-.vx-404__text { font-size: var(--vx-text-base); color: var(--vx-text-secondary); margin-bottom: var(--vx-space-8); max-width: 400px; }
+.vx-404__title { font-size: var(--vx-text-2xl); font-weight: var(--vx-weight-semibold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-4); text-wrap: balance; }
+.vx-404__text { font-size: var(--vx-text-base); color: var(--vx-text-secondary); margin-bottom: var(--vx-space-8); max-width: 400px; text-wrap: pretty; }
 
 .vx-private-entry { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--vx-space-16) var(--vx-space-8); }
-.vx-private-entry__icon { width: 64px; height: 64px; margin: 0 auto var(--vx-space-6); display: flex; align-items: center; justify-content: center; border-radius: var(--vx-radius-16); background: var(--vx-void-muted); border: 1px solid rgba(139,122,184,0.20); color: var(--vx-void); }
-.vx-private-entry__title { font-size: var(--vx-text-3xl); font-weight: var(--vx-weight-bold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-4); }
-.vx-private-entry__text { font-size: var(--vx-text-base); color: var(--vx-text-secondary); margin-bottom: var(--vx-space-8); max-width: 480px; line-height: var(--vx-leading-relaxed); }
+.vx-private-entry__icon { width: 64px; height: 64px; margin: 0 auto var(--vx-space-6); display: flex; align-items: center; justify-content: center; border-radius: var(--vx-radius-16); background: var(--vx-void-muted); border: 1px solid rgba(139,122,184,0.20); color: var(--vx-void); transition: transform var(--vx-transition-slow); }
+.vx-private-entry:hover .vx-private-entry__icon { transform: scale(1.05); }
+.vx-private-entry__title { font-size: var(--vx-text-3xl); font-weight: var(--vx-weight-bold); color: var(--vx-text-primary); margin-bottom: var(--vx-space-4); text-wrap: balance; }
+.vx-private-entry__text { font-size: var(--vx-text-base); color: var(--vx-text-secondary); margin-bottom: var(--vx-space-8); max-width: 480px; line-height: var(--vx-leading-relaxed); text-wrap: pretty; }
 .vx-private-entry__note { font-family: var(--vx-font-mono); font-size: var(--vx-text-xs); color: var(--vx-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: var(--vx-space-8); }
 
 @media (max-width: 1024px) {
@@ -525,7 +690,7 @@ hr { border: none; height: 1px; background: var(--vx-border-default); margin: va
 }
 
 /* ============================================================
-   PHASE 2 — PRIVATE OS CSS (POLISHED)
+   PHASE 2 — PRIVATE OS CSS
    ============================================================ */
 body.vx-private-mode .vx-public-header { display: none; }
 body.vx-private-mode .vx-public-footer { display: none; }
@@ -535,19 +700,20 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
 
 .vx-private-shell { display: flex; min-height: 100vh; background: var(--vx-bg-primary); }
 
-.vx-sidebar__logo { font-size: var(--vx-text-lg); font-weight: var(--vx-weight-bold); letter-spacing: 0.12em; color: var(--vx-text-primary); text-transform: uppercase; text-decoration: none; }
+.vx-sidebar__logo { font-size: var(--vx-text-lg); font-weight: var(--vx-weight-bold); letter-spacing: 0.14em; color: var(--vx-text-primary); text-transform: uppercase; text-decoration: none; }
 .vx-sidebar__logo:hover { color: var(--vx-text-primary); }
 
 .vx-sidebar__nav .vx-nav-item { font-size: var(--vx-text-sm); padding: var(--vx-space-3) var(--vx-space-4); border-radius: var(--vx-radius-6); margin-bottom: var(--vx-space-1); }
 .vx-sidebar__nav .vx-nav-item .vx-nav-item__icon { width: 18px; height: 18px; opacity: 0.5; flex-shrink: 0; }
 .vx-sidebar__nav .vx-nav-item--active .vx-nav-item__icon { opacity: 1; }
 .vx-sidebar__nav .vx-nav-item--active { background: var(--vx-accent-muted); color: var(--vx-accent); }
-.vx-sidebar__nav .vx-nav-item--active:hover { background: rgba(107,159,168,0.18); }
+.vx-sidebar__nav .vx-nav-item--active::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 18px; background: var(--vx-accent); border-radius: 0 var(--vx-radius-full) var(--vx-radius-full) 0; }
+.vx-sidebar__nav .vx-nav-item--active:hover { background: rgba(107,159,168,0.15); }
 .vx-sidebar__nav .vx-nav-item[aria-disabled="true"] { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
 .vx-sidebar__footer .vx-text-xs { font-size: var(--vx-text-xs); color: var(--vx-text-muted); }
 
 .vx-topbar__left { display: flex; align-items: center; gap: var(--vx-space-4); flex: 1; min-width: 0; }
-.vx-topbar__hamburger { display: none; background: none; border: none; color: var(--vx-text-primary); cursor: pointer; padding: var(--vx-space-2); border-radius: var(--vx-radius-4); }
+.vx-topbar__hamburger { display: none; background: none; border: none; color: var(--vx-text-primary); cursor: pointer; padding: var(--vx-space-2); border-radius: var(--vx-radius-4); transition: background var(--vx-transition-fast); }
 .vx-topbar__hamburger:hover { background: var(--vx-border-subtle); }
 .vx-topbar__breadcrumbs { font-size: var(--vx-text-xs); color: var(--vx-text-tertiary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .vx-topbar__breadcrumbs span { color: var(--vx-text-muted); }
@@ -575,7 +741,7 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
 .vx-dropdown__divider { height: 1px; background: var(--vx-border-subtle); margin: var(--vx-space-2) 0; }
 .vx-dropdown__header { padding: var(--vx-space-3) var(--vx-space-4); font-size: var(--vx-text-xs); font-weight: var(--vx-weight-semibold); text-transform: uppercase; letter-spacing: 0.08em; color: var(--vx-text-muted); }
 .vx-dropdown__empty { padding: var(--vx-space-8) var(--vx-space-4); text-align: center; color: var(--vx-text-tertiary); font-size: var(--vx-text-sm); }
-.vx-dropdown__search-input { width: 100%; padding: var(--vx-space-3) var(--vx-space-4); font-family: inherit; font-size: var(--vx-text-sm); color: var(--vx-text-primary); background: var(--vx-bg-tertiary); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-6); outline: none; transition: border-color var(--vx-transition-fast); }
+.vx-dropdown__search-input { width: 100%; padding: var(--vx-space-3) var(--vx-space-4); font-family: inherit; font-size: var(--vx-text-sm); color: var(--vx-text-primary); background: var(--vx-bg-tertiary); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-6); outline: none; transition: border-color var(--vx-transition-fast); caret-color: var(--vx-accent); }
 .vx-dropdown__search-input:focus { border-color: var(--vx-accent); box-shadow: 0 0 0 3px var(--vx-accent-muted); }
 .vx-dropdown__search-input::placeholder { color: var(--vx-text-muted); }
 .vx-dropdown__search-results { max-height: 260px; overflow-y: auto; margin-top: var(--vx-space-2); }
@@ -593,15 +759,15 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
 .vx-notif-item__text { font-size: var(--vx-text-xs); color: var(--vx-text-secondary); margin-top: var(--vx-space-1); }
 .vx-notif-item__time { font-size: var(--vx-text-2xs); color: var(--vx-text-muted); margin-top: var(--vx-space-1); }
 .vx-notif-item--unread { background: var(--vx-accent-muted); }
-.vx-notif-item--unread:hover { background: rgba(107,159,168,0.18); }
+.vx-notif-item--unread:hover { background: rgba(107,159,168,0.15); }
 
 .vx-private-content { padding: var(--vx-space-6); max-width: 100%; }
 .vx-private-content .vx-section-header { margin-bottom: var(--vx-space-8); }
 .vx-private-content .vx-section-header__title { font-size: var(--vx-text-2xl); font-weight: var(--vx-weight-bold); }
 .vx-private-content .vx-section-header__subtitle { font-size: var(--vx-text-base); }
 
-.vx-metric-card { background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-8); padding: var(--vx-space-6); transition: border-color var(--vx-transition-fast); }
-.vx-metric-card:hover { border-color: var(--vx-border-strong); }
+.vx-metric-card { background: var(--vx-bg-elevated); border: 1px solid var(--vx-border-default); border-radius: var(--vx-radius-8); padding: var(--vx-space-6); transition: border-color var(--vx-transition-fast), box-shadow var(--vx-transition-fast), transform var(--vx-transition-fast); }
+.vx-metric-card:hover { border-color: var(--vx-border-strong); box-shadow: var(--vx-shadow-medium); transform: translateY(-1px); }
 .vx-metric-card__label { font-size: var(--vx-text-xs); font-weight: var(--vx-weight-medium); text-transform: uppercase; letter-spacing: 0.08em; color: var(--vx-text-muted); margin-bottom: var(--vx-space-2); }
 .vx-metric-card__value { font-size: var(--vx-text-2xl); font-weight: var(--vx-weight-bold); color: var(--vx-text-primary); }
 .vx-metric-card__change { font-size: var(--vx-text-xs); color: var(--vx-text-tertiary); margin-top: var(--vx-space-2); }
@@ -617,7 +783,7 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
 .vx-table-wrap { overflow-x: auto; margin: var(--vx-space-4) 0; }
 .vx-table { width: 100%; border-collapse: collapse; font-size: var(--vx-text-sm); }
 .vx-table th { text-align: left; padding: var(--vx-space-3) var(--vx-space-4); font-weight: var(--vx-weight-semibold); text-transform: uppercase; letter-spacing: 0.06em; font-size: var(--vx-text-xs); color: var(--vx-text-muted); border-bottom: 1px solid var(--vx-border-default); }
-.vx-table td { padding: var(--vx-space-3) var(--vx-space-4); border-bottom: 1px solid var(--vx-border-subtle); color: var(--vx-text-secondary); vertical-align: middle; }
+.vx-table td { padding: var(--vx-space-3) var(--vx-space-4); border-bottom: 1px solid var(--vx-border-subtle); color: var(--vx-text-secondary); vertical-align: middle; transition: background var(--vx-transition-fast); }
 .vx-table tr:hover td { background: var(--vx-border-subtle); }
 .vx-table .vx-table-actions { display: flex; gap: var(--vx-space-2); flex-wrap: wrap; }
 
@@ -636,7 +802,11 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
 .vx-perm-matrix .vx-perm-check--yes { background: var(--vx-success-muted); color: var(--vx-success); }
 .vx-perm-matrix .vx-perm-check--no { background: var(--vx-border-subtle); color: var(--vx-text-muted); }
 
-@media (max-width: 1024px) { .vx-sidebar { width: 220px; } .vx-private-content { padding: var(--vx-space-5); } }
+@media (max-width: 1024px) {
+  .vx-sidebar { width: 220px; }
+  .vx-private-content { padding: var(--vx-space-5); }
+  .vx-metric-card { padding: var(--vx-space-5); }
+}
 @media (max-width: 768px) {
   .vx-topbar__hamburger { display: flex; align-items: center; justify-content: center; }
   .vx-topbar__breadcrumbs { max-width: 120px; }
@@ -646,15 +816,16 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
   .vx-dropdown__menu--search { min-width: 280px; }
   .vx-table td, .vx-table th { padding: var(--vx-space-2) var(--vx-space-3); }
   .vx-sidebar { width: 280px; }
-  body.vx-private-mode .vx-sidebar__backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.60); z-index: calc(var(--vx-nav-mobile) - 1); opacity: 0; visibility: hidden; transition: opacity var(--vx-transition-slow), visibility var(--vx-transition-slow); }
+  body.vx-private-mode .vx-sidebar__backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: calc(var(--vx-nav-mobile) - 1); opacity: 0; visibility: hidden; transition: opacity var(--vx-transition-slow), visibility var(--vx-transition-slow); }
   body.vx-private-mode .vx-sidebar__backdrop--open { opacity: 1; visibility: visible; }
+  .vx-metric-card__value { font-size: var(--vx-text-xl); }
 }
 @media (max-width: 480px) {
   .vx-topbar__breadcrumbs { max-width: 80px; font-size: var(--vx-text-2xs); }
   .vx-topbar { padding: 0 var(--vx-space-4); }
   .vx-private-content { padding: var(--vx-space-3); }
   .vx-metric-card { padding: var(--vx-space-4); }
-  .vx-metric-card__value { font-size: var(--vx-text-xl); }
+  .vx-metric-card__value { font-size: var(--vx-text-lg); }
 }
 </style>
 </head>
@@ -686,7 +857,7 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
 <!-- Mobile Drawer Backdrop (public) -->
 <div class="vx-mobile-drawer__backdrop" id="mobileDrawerBackdrop"></div>
 
-<!-- Private Sidebar Backdrop (mobile) -->
+<!-- Private Sidebar Backdrop (mobile) — only one instance -->
 <div class="vx-sidebar__backdrop" id="privateSidebarBackdrop"></div>
 
 <!-- Public Header -->
@@ -724,7 +895,7 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
     <a href="#/private" data-route="private" style="color: var(--vx-accent);">Enter VOIDX</a>
   </nav>
   <div class="vx-mobile-drawer__footer">
-    <span class="vx-metadata">VOIDX &middot; Final</span>
+    <span class="vx-metadata">VOIDX &middot; Release Candidate</span>
   </div>
 </div>
 
@@ -743,7 +914,7 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
         <div class="vx-metadata-row">
           <span class="vx-metadata">Est. 2024</span>
           <span class="vx-metadata-row__sep"></span>
-          <span class="vx-metadata">Final</span>
+          <span class="vx-metadata">Release</span>
         </div>
       </div>
       <div>
@@ -775,14 +946,18 @@ body.vx-private-mode .vx-public-page { min-height: 100vh; }
     </div>
     <div class="vx-public-footer__bottom">
       <span class="vx-public-footer__copyright">&copy; 2026 VOIDX. All rights reserved.</span>
-      <span class="vx-public-footer__meta">Final &middot; Build 2026.08.22</span>
+      <span class="vx-public-footer__meta">Release Candidate &middot; Build 2026.08.22</span>
     </div>
   </div>
 </footer>
 
 <script>
 /* ============================================================
-   PHASE 0 — FOUNDATION JS (PRESERVED)
+   VOIDX — COMPLETE JAVASCRIPT ENGINE
+   ============================================================ */
+
+/* ============================================================
+   PHASE 0 — FOUNDATION
    ============================================================ */
 
 const VXMockData = {
@@ -1042,7 +1217,7 @@ document.querySelectorAll('.vx-tab').forEach(tab => {
 });
 
 /* ============================================================
-   PHASE 1 — PUBLIC FOUNDATION JS (PRESERVED)
+   PHASE 1 — PUBLIC FOUNDATION JS
    ============================================================ */
 
 const VXPublicData = {
@@ -1050,7 +1225,7 @@ const VXPublicData = {
     name: 'VOIDX',
     tagline: 'Autonomous research collective',
     description: 'An autonomous research collective operating at the intersection of architecture, technology, and systems design.',
-    phase: 'Final',
+    phase: 'Release',
     build: '2026.08.22'
   },
   nav: [
@@ -1105,7 +1280,7 @@ const VXPublicData = {
 };
 
 /* ============================================================
-   PHASE 2 — PRIVATE OS DATA & HELPER FUNCTIONS (POLISHED)
+   PHASE 2 — PRIVATE OS DATA
    ============================================================ */
 
 let VXPrivateData = {
@@ -1162,16 +1337,17 @@ let VXPrivateData = {
     { name: 'QUANTUM', role: 'MEMBER', status: 'inactive', lastActive: '2026-08-10', avatar: 'Q', joined: '2024-08-01' }
   ],
   notifications: [
-    { id: 'n1', type: 'system', title: 'System Update', text: 'Atlas v2.4 deployed successfully.', time: '2 hours ago', unread: true },
-    { id: 'n2', type: 'project', title: 'Project Update', text: 'Horizon moved to planning phase.', time: '4 hours ago', unread: true },
-    { id: 'n3', type: 'research', title: 'Research Note', text: 'New findings in distributed cognition.', time: '6 hours ago', unread: true },
-    { id: 'n4', type: 'member', title: 'Member Joined', text: 'QUANTUM has joined the collective.', time: '1 day ago', unread: false },
-    { id: 'n5', type: 'system', title: 'Scheduled Maintenance', text: 'Network maintenance completed.', time: '2 days ago', unread: false }
+    { id: 'n1', type: 'system', title: 'System Update', text: 'Atlas v2.4 deployed successfully.', time: '2 hours ago', timestamp: '2026-08-20T12:00:00', unread: true },
+    { id: 'n2', type: 'project', title: 'Project Update', text: 'Horizon moved to planning phase.', time: '4 hours ago', timestamp: '2026-08-20T10:00:00', unread: true },
+    { id: 'n3', type: 'research', title: 'Research Note', text: 'New findings in distributed cognition.', time: '6 hours ago', timestamp: '2026-08-20T08:00:00', unread: true },
+    { id: 'n4', type: 'member', title: 'Member Joined', text: 'QUANTUM has joined the collective.', time: '1 day ago', timestamp: '2026-08-19T10:00:00', unread: false },
+    { id: 'n5', type: 'system', title: 'Scheduled Maintenance', text: 'Network maintenance completed.', time: '2 days ago', timestamp: '2026-08-18T10:00:00', unread: false }
   ]
 };
 
-// Helper functions
-function vxId() { return Date.now().toString(36) + Math.random().toString(36).substr(2, 5); }
+function vxId() {
+  return Date.now().toString(36) + Math.random().toString(36).substring(2, 7);
+}
 
 function addActivity(actor, action, target, category) {
   VXPrivateData.activity.unshift({
@@ -1184,20 +1360,33 @@ function addActivity(actor, action, target, category) {
   if (VXPrivateData.activity.length > 50) VXPrivateData.activity.pop();
 }
 
+function formatRelativeTime(iso) {
+  if (!iso) return 'Just now';
+  const now = new Date();
+  const then = new Date(iso);
+  const diff = Math.floor((now - then) / 1000);
+  if (diff < 60) return 'Just now';
+  if (diff < 3600) return Math.floor(diff / 60) + ' minutes ago';
+  if (diff < 86400) return Math.floor(diff / 3600) + ' hours ago';
+  if (diff < 172800) return 'Yesterday';
+  if (diff < 604800) return Math.floor(diff / 86400) + ' days ago';
+  return then.toLocaleDateString();
+}
+
 function addNotification(title, text, type) {
+  const timestamp = new Date().toISOString();
   VXPrivateData.notifications.unshift({
     id: vxId(),
     type: type || 'system',
     title: title,
     text: text,
+    timestamp: timestamp,
     time: 'Just now',
     unread: true
   });
-  // Update notification badge immediately
   renderOSNotifications();
 }
 
-// CRUD operations (same as before, kept concise)
 function createProject(data) {
   const newProject = {
     id: vxId(),
@@ -1324,9 +1513,125 @@ function getUnreadCount() {
   return VXPrivateData.notifications.filter(n => n.unread).length;
 }
 
-// ============================================================
-// PHASE 2 — MOBILE NAVIGATION (public)
-// ============================================================
+/* ============================================================
+   THEME & SETTINGS SYSTEM (NEW)
+   ============================================================ */
+
+function applyTheme(theme) {
+  if (theme === 'system') {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    VXState.settings.theme = 'system';
+    localStorage.setItem('voidx-theme', 'system');
+    const sel = document.getElementById('settingsTheme');
+    if (sel) sel.value = 'system';
+    initSystemThemeListener();
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+    VXState.settings.theme = theme;
+    localStorage.setItem('voidx-theme', theme);
+    const sel = document.getElementById('settingsTheme');
+    if (sel) sel.value = theme;
+    if (window._systemThemeListener) {
+      window._systemThemeListener.removeEventListener('change', window._systemThemeHandler);
+      window._systemThemeListener = null;
+    }
+  }
+}
+
+function initSystemThemeListener() {
+  if (window._systemThemeListener) return;
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const handler = (e) => {
+    if (VXState.settings.theme === 'system') {
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
+  };
+  mq.addEventListener('change', handler);
+  window._systemThemeListener = mq;
+  window._systemThemeHandler = handler;
+}
+
+function loadTheme() {
+  const stored = localStorage.getItem('voidx-theme');
+  let theme = 'dark';
+  if (stored === 'dark' || stored === 'light' || stored === 'system') {
+    theme = stored;
+  }
+  applyTheme(theme);
+}
+
+function setCompact(enabled) {
+  VXState.settings.compact = enabled;
+  document.documentElement.classList.toggle('vx-compact', enabled);
+  localStorage.setItem('voidx-compact', enabled ? 'true' : 'false');
+  const cb = document.getElementById('settingsCompact');
+  if (cb) cb.checked = enabled;
+}
+
+function loadCompact() {
+  const stored = localStorage.getItem('voidx-compact');
+  const enabled = stored === 'true';
+  VXState.settings.compact = enabled;
+  document.documentElement.classList.toggle('vx-compact', enabled);
+  const cb = document.getElementById('settingsCompact');
+  if (cb) cb.checked = enabled;
+}
+
+function setAnimations(enabled) {
+  VXState.settings.animations = enabled;
+  document.documentElement.classList.toggle('vx-animations-disabled', !enabled);
+  localStorage.setItem('voidx-animations', enabled ? 'true' : 'false');
+  const cb = document.getElementById('settingsAnimations');
+  if (cb) cb.checked = enabled;
+  if (VXNetwork) {
+    if (!enabled) {
+      if (VXNetwork.animationId) {
+        cancelAnimationFrame(VXNetwork.animationId);
+        VXNetwork.animationId = null;
+      }
+      VXNetwork.isActive = false;
+    } else {
+      VXNetwork.isActive = true;
+      if (VXNetwork.canvas && !VXNetwork.animationId) {
+        VXNetwork.animate();
+      }
+    }
+  }
+}
+
+function loadAnimations() {
+  const stored = localStorage.getItem('voidx-animations');
+  const enabled = stored !== 'false';
+  VXState.settings.animations = enabled;
+  document.documentElement.classList.toggle('vx-animations-disabled', !enabled);
+  const cb = document.getElementById('settingsAnimations');
+  if (cb) cb.checked = enabled;
+}
+
+function resetSettings() {
+  VXState.settings.compact = false;
+  VXState.settings.animations = true;
+  VXState.settings.notifications = true;
+  VXState.settings.theme = 'dark';
+  document.documentElement.classList.remove('vx-compact');
+  document.documentElement.classList.remove('vx-animations-disabled');
+  localStorage.removeItem('voidx-compact');
+  localStorage.removeItem('voidx-animations');
+  applyTheme('dark');
+  const cbCompact = document.getElementById('settingsCompact');
+  if (cbCompact) cbCompact.checked = false;
+  const cbAnim = document.getElementById('settingsAnimations');
+  if (cbAnim) cbAnim.checked = true;
+  const selTheme = document.getElementById('settingsTheme');
+  if (selTheme) selTheme.value = 'dark';
+  showToast('success', 'Reset', 'Settings restored to defaults.');
+}
+
+/* ============================================================
+   PHASE 2 — NAVIGATION MODULES
+   ============================================================ */
+
 const VXMobileNav = {
   drawer: document.getElementById('mobileDrawer'),
   backdrop: document.getElementById('mobileDrawerBackdrop'),
@@ -1370,9 +1675,6 @@ const VXMobileNav = {
   }
 };
 
-/* ============================================================
-   PHASE 2 — HEADER SCROLL (preserved)
-   ============================================================ */
 const VXHeader = {
   header: document.getElementById('publicHeader'),
   threshold: 20,
@@ -1393,9 +1695,6 @@ const VXHeader = {
   }
 };
 
-/* ============================================================
-   PHASE 2 — NETWORK CANVAS (preserved)
-   ============================================================ */
 const VXNetwork = {
   canvas: null, ctx: null, particles: [], animationId: null, isActive: false,
 
@@ -1407,7 +1706,8 @@ const VXNetwork = {
     this.createParticles();
     window.addEventListener('resize', () => this.resize());
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReduced) { this.isActive = true; this.animate(); } else { this.drawStatic(); }
+    const animsEnabled = VXState.settings.animations !== false;
+    if (!prefersReduced && animsEnabled) { this.isActive = true; this.animate(); } else { this.drawStatic(); }
   },
 
   resize() {
@@ -1468,9 +1768,6 @@ const VXNetwork = {
   destroy() { this.isActive = false; if (this.animationId) cancelAnimationFrame(this.animationId); }
 };
 
-/* ============================================================
-   PHASE 2 — SCROLL REVEAL (preserved)
-   ============================================================ */
 const VXReveal = {
   observer: null,
 
@@ -1492,8 +1789,9 @@ const VXReveal = {
 };
 
 /* ============================================================
-   PHASE 2 — ROUTER (enhanced, with guard for duplicate listeners)
+   PHASE 2 — ROUTER
    ============================================================ */
+
 const VXRouter = {
   currentRoute: '', currentPath: '',
 
@@ -1514,7 +1812,7 @@ const VXRouter = {
     const parts = path.split('/').filter(Boolean);
     const route = parts[0] || '';
     this.currentRoute = route;
-    this.updateNav();
+    this.updateNav(path);
     this.render(path, parts);
   },
 
@@ -1522,10 +1820,12 @@ const VXRouter = {
     window.location.hash = path ? `#/${path}` : '#/';
   },
 
-  updateNav() {
-    const route = this.currentRoute;
+  updateNav(path) {
+    const fullPath = path || this.currentPath;
     document.querySelectorAll('a[data-route]').forEach(link => {
-      if (link.dataset.route === route) link.setAttribute('aria-current', 'page');
+      const route = link.dataset.route;
+      const isActive = fullPath === route || fullPath.startsWith(route + '/');
+      if (isActive) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
   },
@@ -1548,8 +1848,10 @@ const VXRouter = {
 
   renderPublic(root, route) {
     document.body.classList.remove('vx-private-mode');
-    document.getElementById('publicHeader').style.display = '';
-    document.getElementById('publicFooter').style.display = '';
+    const header = document.getElementById('publicHeader');
+    const footer = document.getElementById('publicFooter');
+    if (header) header.style.display = '';
+    if (footer) footer.style.display = '';
     root.classList.add('vx-page--exit');
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -1581,29 +1883,14 @@ const VXRouter = {
 
   renderPrivate(root, parts) {
     document.body.classList.add('vx-private-mode');
-    document.getElementById('publicHeader').style.display = 'none';
-    document.getElementById('publicFooter').style.display = 'none';
+    const header = document.getElementById('publicHeader');
+    const footer = document.getElementById('publicFooter');
+    if (header) header.style.display = 'none';
+    if (footer) footer.style.display = 'none';
     const page = parts[1] || 'dashboard';
-    let content = '';
-    // Handle unknown private routes with a private 404
     const validPages = ['dashboard','projects','research','journal','ecosystem','activity','members','settings','permissions'];
-    if (!validPages.includes(page)) {
-      content = renderOS404();
-    } else {
-      switch (page) {
-        case 'dashboard': content = renderOSDashboard(); break;
-        case 'projects': content = renderOSProjects(); break;
-        case 'research': content = renderOSResearch(); break;
-        case 'journal': content = renderOSJournal(); break;
-        case 'ecosystem': content = renderOSEcosystem(); break;
-        case 'activity': content = renderOSActivity(); break;
-        case 'members': content = renderOSMembers(); break;
-        case 'settings': content = renderOSSettings(); break;
-        case 'permissions': content = renderOSPermissions(); break;
-        default: content = renderOSDashboard(); // fallback
-      }
-    }
-    root.innerHTML = renderOSLayout(content, page);
+    let content = validPages.includes(page) ? this.getPageContent(page) : renderOS404();
+    root.innerHTML = renderOSLayout(content, validPages.includes(page) ? page : '404');
     root.classList.remove('vx-page--exit');
     root.classList.add('vx-page--enter');
     this.initPrivateSidebar();
@@ -1617,6 +1904,21 @@ const VXRouter = {
         setTimeout(() => { root.classList.remove('vx-page--enter-active'); }, 350);
       });
     });
+  },
+
+  getPageContent(page) {
+    switch (page) {
+      case 'dashboard': return renderOSDashboard();
+      case 'projects': return renderOSProjects();
+      case 'research': return renderOSResearch();
+      case 'journal': return renderOSJournal();
+      case 'ecosystem': return renderOSEcosystem();
+      case 'activity': return renderOSActivity();
+      case 'members': return renderOSMembers();
+      case 'settings': return renderOSSettings();
+      case 'permissions': return renderOSPermissions();
+      default: return renderOSDashboard();
+    }
   },
 
   initPrivateSidebar() {
@@ -1699,7 +2001,7 @@ const VXRouter = {
   updateBreadcrumbs(page) {
     const el = document.getElementById('breadcrumbCurrent');
     if (el) {
-      const labels = { dashboard: 'Dashboard', projects: 'Projects', research: 'Research', journal: 'Journal', ecosystem: 'Ecosystem', activity: 'Activity', members: 'Members', settings: 'Settings', permissions: 'Permissions' };
+      const labels = { dashboard: 'Dashboard', projects: 'Projects', research: 'Research', journal: 'Journal', ecosystem: 'Ecosystem', activity: 'Activity', members: 'Members', settings: 'Settings', permissions: 'Permissions', '404': 'Page Not Found' };
       el.textContent = labels[page] || page.charAt(0).toUpperCase() + page.slice(1);
     }
   }
@@ -1708,6 +2010,7 @@ const VXRouter = {
 /* ============================================================
    PHASE 2 — PRIVATE OS LAYOUT RENDERER
    ============================================================ */
+
 function renderOSLayout(content, currentPage) {
   const user = VXState.currentUser;
   const role = user.role;
@@ -1742,7 +2045,7 @@ function renderOSLayout(content, currentPage) {
         <header class="vx-topbar" role="banner">
           <div class="vx-topbar__left">
             <button class="vx-topbar__hamburger" id="privateSidebarToggle" aria-label="Toggle sidebar" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></svg></button>
-            <div class="vx-topbar__breadcrumbs"><span>OS</span> <span class="vx-metadata-row__sep"></span> <span class="vx-breadcrumb-current" id="breadcrumbCurrent">${currentPage.charAt(0).toUpperCase() + currentPage.slice(1)}</span></div>
+            <div class="vx-topbar__breadcrumbs"><span>OS</span> <span class="vx-metadata-row__sep"></span> <span class="vx-breadcrumb-current" id="breadcrumbCurrent">${currentPage === '404' ? 'Page Not Found' : currentPage.charAt(0).toUpperCase() + currentPage.slice(1)}</span></div>
           </div>
           <div class="vx-topbar__right">
             <div class="vx-dropdown">
@@ -1756,7 +2059,7 @@ function renderOSLayout(content, currentPage) {
               <button class="vx-topbar__notif-btn" id="notifDropdownBtn" aria-label="Notifications" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>${unreadCount > 0 ? `<span class="vx-topbar__notif-badge">${unreadCount}</span>` : ''}</button>
               <div class="vx-dropdown__menu" id="notifDropdownMenu">
                 <div class="vx-dropdown__header">Notifications</div>
-                ${VXPrivateData.notifications.length === 0 ? '<div class="vx-dropdown__empty">No notifications.</div>' : VXPrivateData.notifications.map(n => `<div class="vx-notif-item ${n.unread ? 'vx-notif-item--unread' : ''}"><div class="vx-notif-item__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="vx-notif-item__content"><div class="vx-notif-item__title">${n.title}</div><div class="vx-notif-item__text">${n.text}</div><div class="vx-notif-item__time">${n.time}</div><button class="vx-btn vx-btn--sm vx-btn--ghost" onclick="markNotificationRead('${n.id}'); renderOSNotifications();">Mark read</button></div></div>`).join('')}
+                ${VXPrivateData.notifications.length === 0 ? '<div class="vx-dropdown__empty">No notifications.</div>' : VXPrivateData.notifications.map(n => `<div class="vx-notif-item ${n.unread ? 'vx-notif-item--unread' : ''}"><div class="vx-notif-item__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="vx-notif-item__content"><div class="vx-notif-item__title">${n.title}</div><div class="vx-notif-item__text">${n.text}</div><div class="vx-notif-item__time">${n.timestamp ? formatRelativeTime(n.timestamp) : n.time}</div><button class="vx-btn vx-btn--sm vx-btn--ghost" onclick="markNotificationRead('${n.id}'); renderOSNotifications();">Mark read</button></div></div>`).join('')}
                 <div style="padding: var(--vx-space-2); border-top: 1px solid var(--vx-border-subtle);">
                   <button class="vx-btn vx-btn--sm vx-btn--ghost" onclick="clearAllNotifications(); renderOSNotifications();">Clear all</button>
                 </div>
@@ -1780,15 +2083,22 @@ function renderOSLayout(content, currentPage) {
   `;
 }
 
-// Re-render notification panel without full page reload
 function renderOSNotifications() {
   const menu = document.getElementById('notifDropdownMenu');
   if (!menu) return;
   const unreadCount = getUnreadCount();
-  const badge = document.querySelector('.vx-topbar__notif-badge');
-  if (badge) {
-    if (unreadCount > 0) badge.textContent = unreadCount;
-    else badge.remove();
+  let badge = document.querySelector('.vx-topbar__notif-badge');
+  const btn = document.getElementById('notifDropdownBtn');
+  if (unreadCount > 0) {
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'vx-topbar__notif-badge';
+      if (btn) btn.appendChild(badge);
+    }
+    badge.textContent = unreadCount;
+    badge.style.display = '';
+  } else {
+    if (badge) badge.style.display = 'none';
   }
   if (VXPrivateData.notifications.length === 0) {
     menu.innerHTML = `<div class="vx-dropdown__header">Notifications</div><div class="vx-dropdown__empty">No notifications.</div>`;
@@ -1801,7 +2111,7 @@ function renderOSNotifications() {
           <div class="vx-notif-item__content">
             <div class="vx-notif-item__title">${n.title}</div>
             <div class="vx-notif-item__text">${n.text}</div>
-            <div class="vx-notif-item__time">${n.time}</div>
+            <div class="vx-notif-item__time">${n.timestamp ? formatRelativeTime(n.timestamp) : n.time}</div>
             <button class="vx-btn vx-btn--sm vx-btn--ghost" onclick="markNotificationRead('${n.id}'); renderOSNotifications();">Mark read</button>
           </div>
         </div>
@@ -1814,10 +2124,9 @@ function renderOSNotifications() {
 }
 
 /* ============================================================
-   PHASE 2 — PRIVATE PAGE RENDERERS (polished)
+   PHASE 2 — PRIVATE PAGE RENDERERS
    ============================================================ */
 
-// Private 404
 function renderOS404() {
   return `
     <div class="vx-404">
@@ -1978,13 +2287,14 @@ function renderOSMembers() {
 
 function renderOSSettings() {
   const user = VXState.currentUser;
+  const currentTheme = VXState.settings.theme || 'dark';
   return `
     <div class="vx-stack vx-stack--lg">
       <div class="vx-section-header"><h2 class="vx-section-header__title" style="font-size: var(--vx-text-2xl);">Settings</h2><p class="vx-section-header__subtitle" style="font-size: var(--vx-text-base);">Account and system preferences.</p></div>
       <div class="vx-card vx-card--private"><div class="vx-card__header"><h4 style="font-size: var(--vx-text-base); font-weight: var(--vx-weight-semibold);">Profile</h4></div><div class="vx-card__body"><div class="vx-form-group"><label class="vx-label">Alias</label><input type="text" class="vx-input" value="${user.alias}" style="max-width: 300px;" id="settingsAlias"></div><div class="vx-form-group"><label class="vx-label">Role</label><input type="text" class="vx-input" value="${user.role}" disabled style="max-width: 300px; opacity: 0.6;"></div><div class="vx-form-group"><label class="vx-label">Joined</label><input type="text" class="vx-input" value="${VXPrivateData.members.find(m => m.name === user.alias)?.joined || '2024-01-01'}" disabled style="max-width: 300px; opacity: 0.6;"></div><button class="vx-btn vx-btn--secondary" onclick="saveProfile()">Save Changes</button></div></div>
-      <div class="vx-card vx-card--private"><div class="vx-card__header"><h4 style="font-size: var(--vx-text-base); font-weight: var(--vx-weight-semibold);">Interface</h4></div><div class="vx-card__body"><div class="vx-form-group"><label class="vx-label">Theme</label><select class="vx-select" style="max-width: 200px;" id="settingsTheme" onchange="VXState.settings.theme = this.value; showToast('info','Updated','Theme set to '+this.value)"><option value="dark" ${VXState.settings.theme === 'dark' ? 'selected' : ''}>Dark (Default)</option><option value="light" ${VXState.settings.theme === 'light' ? 'selected' : ''}>Light</option><option value="system" ${VXState.settings.theme === 'system' ? 'selected' : ''}>System</option></select></div><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox" ${VXState.settings.compact ? 'checked' : ''} id="settingsCompact" onchange="VXState.settings.compact = this.checked; showToast('info','Updated','Compact mode ${this.checked ? 'enabled' : 'disabled'}')"><span class="vx-toggle__switch"></span>Compact mode</label></div><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox" ${VXState.settings.animations ? 'checked' : ''} id="settingsAnimations" onchange="VXState.settings.animations = this.checked; showToast('info','Updated','Animations ${this.checked ? 'enabled' : 'disabled'}')"><span class="vx-toggle__switch"></span>Show animations</label></div></div></div>
+      <div class="vx-card vx-card--private"><div class="vx-card__header"><h4 style="font-size: var(--vx-text-base); font-weight: var(--vx-weight-semibold);">Interface</h4></div><div class="vx-card__body"><div class="vx-form-group"><label class="vx-label">Theme</label><select class="vx-select" style="max-width: 200px;" id="settingsTheme" onchange="applyTheme(this.value)"><option value="dark" ${currentTheme === 'dark' ? 'selected' : ''}>Dark</option><option value="light" ${currentTheme === 'light' ? 'selected' : ''}>Light</option><option value="system" ${currentTheme === 'system' ? 'selected' : ''}>System</option></select></div><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox" ${VXState.settings.compact ? 'checked' : ''} id="settingsCompact" onchange="setCompact(this.checked)"><span class="vx-toggle__switch"></span>Compact mode</label></div><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox" ${VXState.settings.animations ? 'checked' : ''} id="settingsAnimations" onchange="setAnimations(this.checked)"><span class="vx-toggle__switch"></span>Show animations</label></div></div></div>
       <div class="vx-card vx-card--private"><div class="vx-card__header"><h4 style="font-size: var(--vx-text-base); font-weight: var(--vx-weight-semibold);">Notifications</h4></div><div class="vx-card__body"><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox" checked><span class="vx-toggle__switch"></span>System notifications</label></div><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox" checked><span class="vx-toggle__switch"></span>Project updates</label></div><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox"><span class="vx-toggle__switch"></span>Research alerts</label></div><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox" checked><span class="vx-toggle__switch"></span>Member activity</label></div></div></div>
-      <div class="vx-card vx-card--private"><div class="vx-card__header"><h4 style="font-size: var(--vx-text-base); font-weight: var(--vx-weight-semibold);">System</h4></div><div class="vx-card__body"><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox"><span class="vx-toggle__switch"></span>Enable experimental features</label></div><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox" checked><span class="vx-toggle__switch"></span>Automatic updates</label></div><div class="vx-form-group"><label class="vx-label">Session</label><div style="font-size: var(--vx-text-sm); color: var(--vx-text-secondary);">Active since ${new Date().toLocaleString()}</div></div><button class="vx-btn vx-btn--ghost vx-btn--sm" onclick="showToast('info','Reset','Settings reset to defaults.')">Reset to defaults</button></div></div>
+      <div class="vx-card vx-card--private"><div class="vx-card__header"><h4 style="font-size: var(--vx-text-base); font-weight: var(--vx-weight-semibold);">System</h4></div><div class="vx-card__body"><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox"><span class="vx-toggle__switch"></span>Enable experimental features</label></div><div class="vx-form-group"><label class="vx-toggle"><input type="checkbox" checked><span class="vx-toggle__switch"></span>Automatic updates</label></div><div class="vx-form-group"><label class="vx-label">Session</label><div style="font-size: var(--vx-text-sm); color: var(--vx-text-secondary);">Active since ${new Date().toLocaleString()}</div></div><button class="vx-btn vx-btn--ghost vx-btn--sm" onclick="resetSettings()">Reset to defaults</button></div></div>
     </div>
   `;
 }
@@ -2002,8 +2312,9 @@ function renderOSPermissions() {
 }
 
 /* ============================================================
-   PHASE 2 — MODAL HELPERS (Create, Edit, Confirm)
+   MODAL HELPERS
    ============================================================ */
+
 function openCreateModal(type) {
   const titles = { project: 'Create Project', research: 'Create Research', journal: 'New Journal Entry' };
   const fields = {
@@ -2178,9 +2489,10 @@ function openEditMemberModal(name) {
 function saveProfile() {
   const alias = document.getElementById('settingsAlias').value.trim();
   if (alias) {
-    VXState.currentUser.alias = alias;
-    const member = VXPrivateData.members.find(m => m.name === VXState.currentUser.alias);
+    const oldAlias = VXState.currentUser.alias;
+    const member = VXPrivateData.members.find(m => m.name === oldAlias);
     if (member) member.name = alias;
+    VXState.currentUser.alias = alias;
     showToast('success','Saved','Profile updated.');
     VXRouter.handleRoute();
   } else {
@@ -2188,9 +2500,6 @@ function saveProfile() {
   }
 }
 
-/* ============================================================
-   PHASE 2 — FILTER / SEARCH ATTACHMENT
-   ============================================================ */
 function attachPrivateFilters() {
   // Projects filter
   const projectsTable = document.getElementById('projectsTable');
@@ -2314,7 +2623,7 @@ function attachPrivateFilters() {
 }
 
 /* ============================================================
-   PHASE 2 — PUBLIC PAGE RENDERERS (preserved)
+   PHASE 2 — PUBLIC PAGE RENDERERS
    ============================================================ */
 
 function renderHome() {
@@ -2323,7 +2632,7 @@ function renderHome() {
   const rndItems = VXPublicData.rnd.slice(0, 3);
   const journalItems = VXPublicData.journal.slice(0, 3);
   return `
-    <section class="vx-public-section vx-public-section--hero"><div class="vx-hero__network" aria-hidden="true"><canvas id="networkCanvas"></canvas></div><div class="vx-public-container vx-hero__content"><div class="vx-eyebrow vx-hero__eyebrow vx-reveal">Final &middot; Public + Private</div><h1 class="vx-display-1 vx-hero__title vx-reveal vx-reveal-delay-1">VOIDX</h1><p class="vx-hero__subtitle vx-reveal vx-reveal-delay-2">An autonomous research collective operating at the intersection of architecture, technology, and systems design.</p><div class="vx-metadata-row vx-hero__meta vx-reveal vx-reveal-delay-2"><span class="vx-metadata">Est. 2024</span><span class="vx-metadata-row__sep"></span><span class="vx-metadata">Distributed</span><span class="vx-metadata-row__sep"></span><span class="vx-metadata">48 Members</span></div><div class="vx-hero__actions vx-reveal vx-reveal-delay-3"><a href="#/projects" class="vx-btn vx-btn--primary" data-route="projects">Explore Projects</a><a href="#/private" class="vx-btn vx-btn--ghost" data-route="private">Enter VOIDX</a></div></div></section>
+    <section class="vx-public-section vx-public-section--hero"><div class="vx-hero__network" aria-hidden="true"><canvas id="networkCanvas"></canvas></div><div class="vx-public-container vx-hero__content"><div class="vx-eyebrow vx-hero__eyebrow vx-reveal">Release Candidate &middot; Public + Private</div><h1 class="vx-display-1 vx-hero__title vx-reveal vx-reveal-delay-1">VOIDX</h1><p class="vx-hero__subtitle vx-reveal vx-reveal-delay-2">An autonomous research collective operating at the intersection of architecture, technology, and systems design.</p><div class="vx-metadata-row vx-hero__meta vx-reveal vx-reveal-delay-2"><span class="vx-metadata">Est. 2024</span><span class="vx-metadata-row__sep"></span><span class="vx-metadata">Distributed</span><span class="vx-metadata-row__sep"></span><span class="vx-metadata">48 Members</span></div><div class="vx-hero__actions vx-reveal vx-reveal-delay-3"><a href="#/projects" class="vx-btn vx-btn--primary" data-route="projects">Explore Projects</a><a href="#/private" class="vx-btn vx-btn--ghost" data-route="private">Enter VOIDX</a></div></div></section>
     <section class="vx-public-section vx-public-section--tight"><div class="vx-public-container"><div class="vx-section-header vx-reveal"><div class="vx-eyebrow vx-section-header__eyebrow">Selected Work</div><h2 class="vx-section-header__title">Featured Projects</h2><p class="vx-section-header__subtitle">Systems and research initiatives currently under active development.</p></div><div class="vx-grid vx-grid--2" style="gap: var(--vx-space-6);">${featured.map(p => renderProjectCard(p)).join('')}${projects.map(p => renderProjectCard(p)).join('')}</div><div style="text-align: center; margin-top: var(--vx-space-12);"><a href="#/projects" class="vx-btn vx-btn--secondary" data-route="projects">View All Projects</a></div></div></section>
     <section class="vx-public-section vx-public-section--tight" style="background: var(--vx-bg-secondary);"><div class="vx-public-container"><div class="vx-section-header vx-reveal"><div class="vx-eyebrow vx-section-header__eyebrow">Research</div><h2 class="vx-section-header__title">R&D</h2><p class="vx-section-header__subtitle">Active research streams exploring the boundaries of autonomous systems and collective intelligence.</p></div><div class="vx-grid vx-grid--3" style="gap: var(--vx-space-6);">${rndItems.map(r => renderRNDCard(r)).join('')}</div><div style="text-align: center; margin-top: var(--vx-space-12);"><a href="#/rnd" class="vx-btn vx-btn--secondary" data-route="rnd">All Research</a></div></div></section>
     <section class="vx-public-section vx-public-section--tight"><div class="vx-public-container vx-public-container--narrow"><div class="vx-section-header vx-section-header--center vx-reveal"><div class="vx-eyebrow vx-section-header__eyebrow">Journal</div><h2 class="vx-section-header__title">Recent Writing</h2><p class="vx-section-header__subtitle">Essays, research notes, and operational reflections from the collective.</p></div><div class="vx-stack vx-stack--lg">${journalItems.map(j => renderJournalCard(j)).join('')}</div><div style="text-align: center; margin-top: var(--vx-space-12);"><a href="#/journal" class="vx-btn vx-btn--ghost" data-route="journal">Read All Entries</a></div></div></section>
@@ -2363,7 +2672,7 @@ function render404() {
 }
 
 /* ============================================================
-   PHASE 2 — COMPONENT HELPERS (preserved)
+   COMPONENT HELPERS
    ============================================================ */
 
 function renderProjectCard(p) {
@@ -2388,7 +2697,7 @@ function renderEcosystemNode(n) {
 }
 
 /* ============================================================
-   PHASE 2 — AUTHENTICATION
+   AUTHENTICATION
    ============================================================ */
 
 function authenticate(role) {
@@ -2418,17 +2727,21 @@ window.renderOSNotifications = renderOSNotifications;
 window.saveProfile = saveProfile;
 window.openInviteMemberModal = openInviteMemberModal;
 window.openEditMemberModal = openEditMemberModal;
+window.applyTheme = applyTheme;
+window.setCompact = setCompact;
+window.setAnimations = setAnimations;
+window.resetSettings = resetSettings;
 
 /* ============================================================
-   PHASE 2 — GLOBAL EVENT LISTENERS (protected against duplicates)
+   GLOBAL EVENT LISTENERS
    ============================================================ */
+
 let _globalListenersAdded = false;
 
 function addGlobalListeners() {
   if (_globalListenersAdded) return;
   _globalListenersAdded = true;
 
-  // Close dropdowns when clicking outside
   document.addEventListener('click', (e) => {
     document.querySelectorAll('.vx-dropdown__menu--open').forEach(menu => {
       const parent = menu.closest('.vx-dropdown');
@@ -2440,15 +2753,13 @@ function addGlobalListeners() {
     });
   });
 
-  // Keyboard shortcut: / or Ctrl+K for search
   document.addEventListener('keydown', (e) => {
     if ((e.key === '/' || (e.ctrlKey && e.key === 'k')) && document.body.classList.contains('vx-private-mode')) {
       const searchBtn = document.getElementById('searchDropdownBtn');
       const searchMenu = document.getElementById('searchDropdownMenu');
       if (searchBtn && searchMenu) {
         e.preventDefault();
-        const isOpen = searchMenu.classList.contains('vx-dropdown__menu--open');
-        if (!isOpen) {
+        if (!searchMenu.classList.contains('vx-dropdown__menu--open')) {
           searchMenu.classList.add('vx-dropdown__menu--open');
           searchBtn.setAttribute('aria-expanded', 'true');
           const input = searchMenu.querySelector('.vx-dropdown__search-input');
@@ -2458,7 +2769,6 @@ function addGlobalListeners() {
     }
   });
 
-  // Global logout handler via event delegation
   document.addEventListener('click', (e) => {
     if (e.target.closest('#logoutBtn')) {
       e.preventDefault();
@@ -2466,7 +2776,6 @@ function addGlobalListeners() {
     }
   });
 
-  // Global Escape handler for private sidebar
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       const sidebar = document.getElementById('privateSidebar');
@@ -2482,25 +2791,26 @@ function addGlobalListeners() {
 }
 
 /* ============================================================
-   PHASE 2 — INITIALIZATION
+   INITIALIZATION
    ============================================================ */
 
 function init() {
-  // Defensive permission UI updates
+  // Load settings before anything else
+  loadTheme();
+  loadCompact();
+  loadAnimations();
+
   if (document.getElementById('currentRoleName')) updateRoleUI();
   if (document.getElementById('permMatrixBody')) updatePermissionMatrix();
   if (document.getElementById('permDemoGrid')) updatePermissionDemo();
 
-  // Initialize modules
   VXMobileNav.init();
   VXHeader.init();
   VXRouter.init();
   VXReveal.init();
-
-  // Add global listeners once
   addGlobalListeners();
 
-  console.log('[VOIDX] Final system initialized');
+  console.log('[VOIDX] Release Candidate initialized');
   console.log('[VOIDX] Current user:', VXState.currentUser);
   console.log('[VOIDX] Authenticated:', VXState.isAuthenticated);
 }
